@@ -1,6 +1,13 @@
 version: '3.1'
 
 services:
+  oracle:
+    image: truevoly/oracle-12c:latest
+    container_name: video_oracle
+    ports:
+      - 1521:1521
+      - 8080:8080
+
   web:
     build: .
     container_name: video_web
