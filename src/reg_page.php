@@ -26,17 +26,17 @@ if (isset($_SESSION['user_id'])) {
 <body>
 
     <form action="php/reg.php" method="post">
-        <label for="reg-email">Email cím</label>
-        <input type="email" name="reg-email" id="reg-email" maxlength="50" required>
+        <label for="reg_email">Email cím</label>
+        <input type="email" name="reg_email" id="reg_email" maxlength="50" required>
 
-        <label for="reg-username">Felhasználónév</label>
-        <input type="text" name="reg-username" id="reg-username" maxlength="30" required>
+        <label for="reg_username">Felhasználónév</label>
+        <input type="text" name="reg_username" id="reg_username" maxlength="30" required>
 
-        <label for="reg-pass">Jelszó</label>
-        <input type="password" name="reg-pass" id="reg-pass" maxlength="50" required>
+        <label for="reg_pass">Jelszó</label>
+        <input type="password" name="reg_pass" id="reg_pass" maxlength="50" required>
 
-        <label for="reg-pass-re">Jelszó újra</label>
-        <input type="password" name="reg-pass-re" id="reg-pass-re" maxlength="50" required>
+        <label for="reg_pass_re">Jelszó újra</label>
+        <input type="password" name="reg_pass_re" id="reg_pass_re" maxlength="50" required>
 
         <input type="submit" value="Regisztráció">
     </form>
