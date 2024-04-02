@@ -5,6 +5,19 @@ if (isset($_SESSION['user_name'])) {
     echo "<p>Üdvözöljük, " . $_SESSION['user_name'] . "!</p>";
 }
 
+if (!isset($_SESSION['database_connection_success'])) {
+    require "./php/oracle_conn.php";
+
+    if ($conn) {
+        echo '
+        <script type="text/javascript">
+            window.onload = function () { alert("Az adatbázissal való kapcsolat létrejött."); } 
+        </script>';
+
+        $_SESSION['database_connection_success'] = true;
+    }
+}
+
 ?>
 
 <!DOCTYPE html>
