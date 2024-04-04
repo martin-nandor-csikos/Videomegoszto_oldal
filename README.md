@@ -30,5 +30,7 @@ Az oldalnak az alábbi funkciókkal kell rendelkeznie:
 
 ## Kollaborátorok
 Csíkos Martin Nándor
+
 Makó Ádám Péter
+
 Kurunczi Nándor
