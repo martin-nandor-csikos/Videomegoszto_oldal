@@ -5,6 +5,7 @@ if (isset($_SESSION['user_name'])) {
     echo "<p>Üdvözöljük, " . $_SESSION['user_name'] . "!</p>";
 }
 
+// Database connection popup alert. Csak akkor jön elő, ha legelső alkalommal nyílik meg az oldal
 if (!isset($_SESSION['database_connection_success'])) {
     require "./php/oracle_conn.php";
 
@@ -33,8 +34,12 @@ if (!isset($_SESSION['database_connection_success'])) {
 
     <?php
     if (isset($_SESSION['user_id'])) {
-        // Kedvelt videók gomb
-        // Feltöltés gomb
+        if ($_SESSION['user_isadmin'] == 0) {
+            // Kedvelt videók gomb
+            // Feltöltés gomb
+        } else {
+            // Admin panel
+        }
         echo "<a href=\"php/logout.php\">Kijelentkezés</a>";
     } else {
         echo "<a href=\"login_page.php\">Bejelentkezés</a>";
