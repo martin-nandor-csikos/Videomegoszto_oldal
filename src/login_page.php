@@ -1,7 +1,6 @@
 <?php
 session_start();
 
-// Hibák kiiratása, ha vannak
 if (isset($_SESSION['login_error'])) {
     echo $_SESSION['login_error'];
     unset($_SESSION['login_error']);
