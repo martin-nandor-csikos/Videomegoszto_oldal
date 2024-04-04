@@ -3,7 +3,7 @@
 // Csatlakozás az Oracle adatbázishoz
 // Kommenteljétek ki a változót, ha más paramétereket akartok
 
-$conn = oci_connect('system', 'oracle', 'video_oracle/XE');
+$conn = oci_connect('system', 'oracle', 'video_oracle/XE', 'AL32UTF8');
 // $conn = oci_connect('system', 'oracle', 'localhost/XE');
 
 if (!$conn) {

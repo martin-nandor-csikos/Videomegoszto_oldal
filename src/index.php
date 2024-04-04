@@ -37,6 +37,7 @@ if (!isset($_SESSION['database_connection_success'])) {
         if ($_SESSION['user_isadmin'] == 0) {
             // Kedvelt videók gomb
             // Feltöltés gomb
+            echo "<a href=\"upload_page.php\">Videó feltöltés</a><br />";
         } else {
             // Admin panel
         }
