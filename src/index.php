@@ -35,6 +35,7 @@ if (!isset($_SESSION['database_connection_success'])) {
     if (isset($_SESSION['user_id'])) {
         // Kedvelt videók gomb
         // Feltöltés gomb
+        echo "<a href=\"upload_page.php\">Videó feltöltés</a><br />";
         echo "<a href=\"php/logout.php\">Kijelentkezés</a>";
     } else {
         echo "<a href=\"login_page.php\">Bejelentkezés</a>";
