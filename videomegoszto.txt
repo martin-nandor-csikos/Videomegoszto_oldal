@@ -1,5 +1,5 @@
 --------------------------------------------------------
---  File created - Saturday-March-23-2024   
+--  File created - Tuesday-April-09-2024   
 --------------------------------------------------------
 --------------------------------------------------------
 --  DDL for Sequence CIMKE_SEQ
@@ -41,9 +41,9 @@
   BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
   TABLESPACE "USERS" ;
 
-   COMMENT ON COLUMN "CIMKE"."ID" IS 'A c√≠mke azonos√≠t√≥ja (kulcs)';
-   COMMENT ON COLUMN "CIMKE"."CIM" IS 'A c√≠mke c√≠me (egyedi)';
-   COMMENT ON TABLE "CIMKE"  IS 'A vide√≥k lehets√©ges c√≠mk√©it tartalmaz√≥ t√°bla.';
+   COMMENT ON COLUMN "CIMKE"."ID" IS 'A cÌmke azonosÌtÛja (kulcs)';
+   COMMENT ON COLUMN "CIMKE"."CIM" IS 'A cÌmke cÌme (egyedi)';
+   COMMENT ON TABLE "CIMKE"  IS 'A videÛk lehetsÈges cÌmkÈit tartalmazÛ t·bla.';
 --------------------------------------------------------
 --  DDL for Table EREDET
 --------------------------------------------------------
@@ -59,9 +59,9 @@
   BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
   TABLESPACE "USERS" ;
 
-   COMMENT ON COLUMN "EREDET"."KOMMENT_ID" IS 'A komment azonos√≠t√≥ja (kulcs)';
-   COMMENT ON COLUMN "EREDET"."VIDEO_ID" IS 'A vide√≥ azonos√≠t√≥ja (kulcs)';
-   COMMENT ON TABLE "EREDET"  IS 'A kommentek eredet vide√≥j√°t jel√∂l≈ë t√°bla.';
+   COMMENT ON COLUMN "EREDET"."KOMMENT_ID" IS 'A komment azonosÌtÛja (kulcs)';
+   COMMENT ON COLUMN "EREDET"."VIDEO_ID" IS 'A videÛ azonosÌtÛja (kulcs)';
+   COMMENT ON TABLE "EREDET"  IS 'A kommentek eredet videÛj·t jelˆl? t·bla.';
 --------------------------------------------------------
 --  DDL for Table FELHASZNALO
 --------------------------------------------------------
@@ -80,12 +80,12 @@
   BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
   TABLESPACE "USERS" ;
 
-   COMMENT ON COLUMN "FELHASZNALO"."ID" IS 'A felhaszn√°l√≥ azonos√≠t√≥ja (kulcs)';
-   COMMENT ON COLUMN "FELHASZNALO"."NEV" IS 'A felhaszn√°l√≥n√©v';
-   COMMENT ON COLUMN "FELHASZNALO"."EMAIL" IS 'A felhaszn√°l√≥ email c√≠me (jelsz√≥val egy√ºtt egyedi)';
-   COMMENT ON COLUMN "FELHASZNALO"."JELSZO" IS 'A felhaszn√°l√≥ jelszava titkos√≠tva (emaillel egy√ºtt egyedi)';
-   COMMENT ON COLUMN "FELHASZNALO"."ADMIN" IS 'Igaz, ha a felhaszn√°l√≥ adminisztr√°tor';
-   COMMENT ON TABLE "FELHASZNALO"  IS 'A felhaszn√°l√≥k adatait tartalmaz√≥ t√°bla.';
+   COMMENT ON COLUMN "FELHASZNALO"."ID" IS 'A felhaszn·lÛ azonosÌtÛja (kulcs)';
+   COMMENT ON COLUMN "FELHASZNALO"."NEV" IS 'A felhaszn·lÛnÈv';
+   COMMENT ON COLUMN "FELHASZNALO"."EMAIL" IS 'A felhaszn·lÛ email cÌme (jelszÛval egy¸tt egyedi)';
+   COMMENT ON COLUMN "FELHASZNALO"."JELSZO" IS 'A felhaszn·lÛ jelszava titkosÌtva (emaillel egy¸tt egyedi)';
+   COMMENT ON COLUMN "FELHASZNALO"."ADMIN" IS 'Igaz, ha a felhaszn·lÛ adminisztr·tor';
+   COMMENT ON TABLE "FELHASZNALO"  IS 'A felhaszn·lÛk adatait tartalmazÛ t·bla.';
 --------------------------------------------------------
 --  DDL for Table FELTOLTO
 --------------------------------------------------------
@@ -102,10 +102,10 @@
   BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
   TABLESPACE "USERS" ;
 
-   COMMENT ON COLUMN "FELTOLTO"."FELHASZNALO_ID" IS 'A felt√∂lt≈ë felhaszn√°l√≥ azonos√≠t√≥ja (kulcs)';
-   COMMENT ON COLUMN "FELTOLTO"."VIDEO_ID" IS 'A vide√≥ azonos√≠t√≥ja (kulcs)';
-   COMMENT ON COLUMN "FELTOLTO"."DATUM" IS 'A vide√≥ felt√∂lt√©s√©nek d√°tuma';
-   COMMENT ON TABLE "FELTOLTO"  IS 'A vide√≥k felt√∂lt√©s√©t le√≠r√≥ t√°bla.';
+   COMMENT ON COLUMN "FELTOLTO"."FELHASZNALO_ID" IS 'A feltˆlt? felhaszn·lÛ azonosÌtÛja (kulcs)';
+   COMMENT ON COLUMN "FELTOLTO"."VIDEO_ID" IS 'A videÛ azonosÌtÛja (kulcs)';
+   COMMENT ON COLUMN "FELTOLTO"."DATUM" IS 'A videÛ feltˆltÈsÈnek d·tuma';
+   COMMENT ON TABLE "FELTOLTO"  IS 'A videÛk feltˆltÈsÈt leÌrÛ t·bla.';
 --------------------------------------------------------
 --  DDL for Table IRO
 --------------------------------------------------------
@@ -122,10 +122,10 @@
   BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
   TABLESPACE "USERS" ;
 
-   COMMENT ON COLUMN "IRO"."FELHASZNALO_ID" IS 'A felt√∂lt≈ë felhaszn√°l√≥ azonos√≠t√≥ja (kulcs)';
-   COMMENT ON COLUMN "IRO"."KOMMENT_ID" IS 'A komment azonos√≠t√≥ja (kulcs)';
-   COMMENT ON COLUMN "IRO"."IDO" IS 'A komment ki√≠r√°s√°nak d√°tuma √©s id≈ëpontja';
-   COMMENT ON TABLE "IRO"  IS 'A kommentek ki√≠r√°s√°t le√≠r√≥ t√°bla.';
+   COMMENT ON COLUMN "IRO"."FELHASZNALO_ID" IS 'A feltˆlt? felhaszn·lÛ azonosÌtÛja (kulcs)';
+   COMMENT ON COLUMN "IRO"."KOMMENT_ID" IS 'A komment azonosÌtÛja (kulcs)';
+   COMMENT ON COLUMN "IRO"."IDO" IS 'A komment kiÌr·s·nak d·tuma Ès id?pontja';
+   COMMENT ON TABLE "IRO"  IS 'A kommentek kiÌr·s·t leÌrÛ t·bla.';
 --------------------------------------------------------
 --  DDL for Table KATEGORIA
 --------------------------------------------------------
@@ -141,9 +141,9 @@
   BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
   TABLESPACE "USERS" ;
 
-   COMMENT ON COLUMN "KATEGORIA"."ID" IS 'A kateg√≥ria azonos√≠t√≥ja (kulcs)';
-   COMMENT ON COLUMN "KATEGORIA"."CIM" IS 'A kateg√≥ria c√≠me (egyedi)';
-   COMMENT ON TABLE "KATEGORIA"  IS 'A vide√≥k lehets√©ges kateg√≥ri√°it tartalmaz√≥ t√°bla.';
+   COMMENT ON COLUMN "KATEGORIA"."ID" IS 'A kategÛria azonosÌtÛja (kulcs)';
+   COMMENT ON COLUMN "KATEGORIA"."CIM" IS 'A kategÛria cÌme (egyedi)';
+   COMMENT ON TABLE "KATEGORIA"  IS 'A videÛk lehetsÈges kategÛri·it tartalmazÛ t·bla.';
 --------------------------------------------------------
 --  DDL for Table KEDVENC
 --------------------------------------------------------
@@ -159,9 +159,9 @@
   BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
   TABLESPACE "USERS" ;
 
-   COMMENT ON COLUMN "KEDVENC"."FELHASZNALO_ID" IS 'A felhaszn√°l√≥ azonos√≠t√≥ja (kulcs)';
-   COMMENT ON COLUMN "KEDVENC"."VIDEO_ID" IS 'A kedvelt vide√≥ azonos√≠t√≥ja (kulcs)';
-   COMMENT ON TABLE "KEDVENC"  IS 'A felhaszn√°l√≥k kedvelt vide√≥it jel√∂l≈ë t√°bla.';
+   COMMENT ON COLUMN "KEDVENC"."FELHASZNALO_ID" IS 'A felhaszn·lÛ azonosÌtÛja (kulcs)';
+   COMMENT ON COLUMN "KEDVENC"."VIDEO_ID" IS 'A kedvelt videÛ azonosÌtÛja (kulcs)';
+   COMMENT ON TABLE "KEDVENC"  IS 'A felhaszn·lÛk kedvelt videÛit jelˆl? t·bla.';
 --------------------------------------------------------
 --  DDL for Table KOMMENT
 --------------------------------------------------------
@@ -177,9 +177,9 @@
   BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
   TABLESPACE "USERS" ;
 
-   COMMENT ON COLUMN "KOMMENT"."ID" IS 'A komment azonos√≠t√≥ja (kulcs)';
-   COMMENT ON COLUMN "KOMMENT"."SZOVEG" IS 'A komment sz√∂vege';
-   COMMENT ON TABLE "KOMMENT"  IS 'A kommentek sz√∂veg√©t tartalmaz√≥ t√°bla.';
+   COMMENT ON COLUMN "KOMMENT"."ID" IS 'A komment azonosÌtÛja (kulcs)';
+   COMMENT ON COLUMN "KOMMENT"."SZOVEG" IS 'A komment szˆvege';
+   COMMENT ON TABLE "KOMMENT"  IS 'A kommentek szˆvegÈt tartalmazÛ t·bla.';
 --------------------------------------------------------
 --  DDL for Table VIDEO
 --------------------------------------------------------
@@ -188,7 +188,8 @@
    (	"ID" NUMBER(10,0), 
 	"CIM" VARCHAR2(255 CHAR), 
 	"LEIRAS" VARCHAR2(1000 CHAR), 
-	"PATH" VARCHAR2(255 CHAR)
+	"PATH" VARCHAR2(255 CHAR), 
+	"THUMBNAIL" VARCHAR2(255 BYTE)
    ) SEGMENT CREATION IMMEDIATE 
   PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 
  NOCOMPRESS LOGGING
@@ -197,11 +198,12 @@
   BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
   TABLESPACE "USERS" ;
 
-   COMMENT ON COLUMN "VIDEO"."ID" IS 'A vide√≥ azonos√≠t√≥ja (kulcs)';
-   COMMENT ON COLUMN "VIDEO"."CIM" IS 'A vide√≥ c√≠me';
-   COMMENT ON COLUMN "VIDEO"."LEIRAS" IS 'A vide√≥ le√≠r√°sa';
-   COMMENT ON COLUMN "VIDEO"."PATH" IS 'A vide√≥ el√©r√©si √∫tvonala (egyedi)';
-   COMMENT ON TABLE "VIDEO"  IS 'A vide√≥k adatait tartalmaz√≥ t√°bla.';
+   COMMENT ON COLUMN "VIDEO"."ID" IS 'A videÛ azonosÌtÛja (kulcs)';
+   COMMENT ON COLUMN "VIDEO"."CIM" IS 'A videÛ cÌme';
+   COMMENT ON COLUMN "VIDEO"."LEIRAS" IS 'A videÛ leÌr·sa';
+   COMMENT ON COLUMN "VIDEO"."PATH" IS 'A videÛ elÈrÈsi ˙tvonala (egyedi)';
+   COMMENT ON COLUMN "VIDEO"."THUMBNAIL" IS 'A videÛ kÈpÈnek elÈrÈsi ˙tvonala (egyedi)';
+   COMMENT ON TABLE "VIDEO"  IS 'A videÛk adatait tartalmazÛ t·bla.';
 --------------------------------------------------------
 --  DDL for Table VIDEO_CIMKE
 --------------------------------------------------------
@@ -217,9 +219,9 @@
   BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
   TABLESPACE "USERS" ;
 
-   COMMENT ON COLUMN "VIDEO_CIMKE"."VIDEO_ID" IS 'A vide√≥ azonos√≠t√≥ja (kulcs)';
-   COMMENT ON COLUMN "VIDEO_CIMKE"."CIMKE_ID" IS 'Egy c√≠mke azonos√≠t√≥ja (kulcs)';
-   COMMENT ON TABLE "VIDEO_CIMKE"  IS 'A vide√≥k egy-egy c√≠mk√©j√©t jel√∂l≈ë t√°bla.';
+   COMMENT ON COLUMN "VIDEO_CIMKE"."VIDEO_ID" IS 'A videÛ azonosÌtÛja (kulcs)';
+   COMMENT ON COLUMN "VIDEO_CIMKE"."CIMKE_ID" IS 'Egy cÌmke azonosÌtÛja (kulcs)';
+   COMMENT ON TABLE "VIDEO_CIMKE"  IS 'A videÛk egy-egy cÌmkÈjÈt jelˆl? t·bla.';
 --------------------------------------------------------
 --  DDL for Table VIDEO_KATEGORIA
 --------------------------------------------------------
@@ -235,25 +237,25 @@
   BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
   TABLESPACE "USERS" ;
 
-   COMMENT ON COLUMN "VIDEO_KATEGORIA"."VIDEO_ID" IS 'A vide√≥ azonos√≠t√≥ja (kulcs)';
-   COMMENT ON COLUMN "VIDEO_KATEGORIA"."KATEGORIA_ID" IS 'A kateg√≥ria azonos√≠t√≥ja (kulcs)';
-   COMMENT ON TABLE "VIDEO_KATEGORIA"  IS 'A vide√≥k kategori√°j√°t jel√∂l≈ë t√°bla.';
+   COMMENT ON COLUMN "VIDEO_KATEGORIA"."VIDEO_ID" IS 'A videÛ azonosÌtÛja (kulcs)';
+   COMMENT ON COLUMN "VIDEO_KATEGORIA"."KATEGORIA_ID" IS 'A kategÛria azonosÌtÛja (kulcs)';
+   COMMENT ON TABLE "VIDEO_KATEGORIA"  IS 'A videÛk kategori·j·t jelˆl? t·bla.';
 REM INSERTING into CIMKE
 SET DEFINE OFF;
 Insert into CIMKE (ID,CIM) values (1,'Vicces');
-Insert into CIMKE (ID,CIM) values (2,'Eg√©szs√©g');
+Insert into CIMKE (ID,CIM) values (2,'EgÈszsÈg');
 Insert into CIMKE (ID,CIM) values (3,'Recept');
-Insert into CIMKE (ID,CIM) values (4,'Kreat√≠v');
-Insert into CIMKE (ID,CIM) values (5,'Tr√ºkk');
+Insert into CIMKE (ID,CIM) values (4,'KreatÌv');
+Insert into CIMKE (ID,CIM) values (5,'Tr¸kk');
 Insert into CIMKE (ID,CIM) values (6,'DIY');
-Insert into CIMKE (ID,CIM) values (7,'T√∂rt√©nelem');
-Insert into CIMKE (ID,CIM) values (8,'Tudom√°ny');
-Insert into CIMKE (ID,CIM) values (9,'Bemutatkoz√≥');
-Insert into CIMKE (ID,CIM) values (10,'Felfedez√©s');
-Insert into CIMKE (ID,CIM) values (11,'90-es √©vek');
-Insert into CIMKE (ID,CIM) values (12,'80-as √©vek');
-Insert into CIMKE (ID,CIM) values (13,'Technol√≥gia');
-Insert into CIMKE (ID,CIM) values (14,'S√ºti');
+Insert into CIMKE (ID,CIM) values (7,'TˆrtÈnelem');
+Insert into CIMKE (ID,CIM) values (8,'Tudom·ny');
+Insert into CIMKE (ID,CIM) values (9,'BemutatkozÛ');
+Insert into CIMKE (ID,CIM) values (10,'FelfedezÈs');
+Insert into CIMKE (ID,CIM) values (11,'90-es Èvek');
+Insert into CIMKE (ID,CIM) values (12,'80-as Èvek');
+Insert into CIMKE (ID,CIM) values (13,'TechnolÛgia');
+Insert into CIMKE (ID,CIM) values (14,'S¸ti');
 Insert into CIMKE (ID,CIM) values (15,'Vlog');
 Insert into CIMKE (ID,CIM) values (16,'Pop');
 REM INSERTING into EREDET
@@ -346,20 +348,20 @@ Insert into IRO (FELHASZNALO_ID,KOMMENT_ID,IDO) values (4,34,to_timestamp('23-MA
 Insert into IRO (FELHASZNALO_ID,KOMMENT_ID,IDO) values (5,35,to_timestamp('23-MAR-24 05.07.42.921459000 PM','DD-MON-RR HH.MI.SSXFF AM'));
 REM INSERTING into KATEGORIA
 SET DEFINE OFF;
-Insert into KATEGORIA (ID,CIM) values (1,'Film √©s anim√°ci√≥');
-Insert into KATEGORIA (ID,CIM) values (2,'Aut√≥k √©s j√°rm≈±vek');
+Insert into KATEGORIA (ID,CIM) values (1,'Film Ès anim·ciÛ');
+Insert into KATEGORIA (ID,CIM) values (2,'AutÛk Ès j·rm?vek');
 Insert into KATEGORIA (ID,CIM) values (3,'Zene');
-Insert into KATEGORIA (ID,CIM) values (4,'M≈±v√©szet');
+Insert into KATEGORIA (ID,CIM) values (4,'M?vÈszet');
 Insert into KATEGORIA (ID,CIM) values (5,'Sport');
-Insert into KATEGORIA (ID,CIM) values (6,'Utaz√°s');
-Insert into KATEGORIA (ID,CIM) values (7,'Kult√∫ra');
-Insert into KATEGORIA (ID,CIM) values (8,'Vide√≥j√°t√©k');
-Insert into KATEGORIA (ID,CIM) values (9,'Szem√©lyes vagy vlog');
-Insert into KATEGORIA (ID,CIM) values (10,'Kom√©dia');
-Insert into KATEGORIA (ID,CIM) values (11,'Sz√≥rakoz√°s');
-Insert into KATEGORIA (ID,CIM) values (12,'H√≠rek √©s politika');
-Insert into KATEGORIA (ID,CIM) values (13,'Oktat√°s');
-Insert into KATEGORIA (ID,CIM) values (14,'Tudom√°ny');
+Insert into KATEGORIA (ID,CIM) values (6,'Utaz·s');
+Insert into KATEGORIA (ID,CIM) values (7,'Kult˙ra');
+Insert into KATEGORIA (ID,CIM) values (8,'VideÛj·tÈk');
+Insert into KATEGORIA (ID,CIM) values (9,'SzemÈlyes vagy vlog');
+Insert into KATEGORIA (ID,CIM) values (10,'KomÈdia');
+Insert into KATEGORIA (ID,CIM) values (11,'SzÛrakoz·s');
+Insert into KATEGORIA (ID,CIM) values (12,'HÌrek Ès politika');
+Insert into KATEGORIA (ID,CIM) values (13,'Oktat·s');
+Insert into KATEGORIA (ID,CIM) values (14,'Tudom·ny');
 REM INSERTING into KEDVENC
 SET DEFINE OFF;
 Insert into KEDVENC (FELHASZNALO_ID,VIDEO_ID) values (1,1);
@@ -372,47 +374,47 @@ Insert into KEDVENC (FELHASZNALO_ID,VIDEO_ID) values (5,5);
 REM INSERTING into KOMMENT
 SET DEFINE OFF;
 Insert into KOMMENT (ID,SZOVEG) values (1,'Nagyon tetszik ez a video!');
-Insert into KOMMENT (ID,SZOVEG) values (2,'K√∂sz√∂n√∂m a j√≥ tippeket!');
-Insert into KOMMENT (ID,SZOVEG) values (3,'Ez nagyon hasznos volt, k√∂sz√∂n√∂m!');
-Insert into KOMMENT (ID,SZOVEG) values (4,'Szerintem ez az egyik legjobb vide√≥!');
-Insert into KOMMENT (ID,SZOVEG) values (5,'Nagyon √©rdekes t√©ma, j√≥l meg√≠rtad.');
-Insert into KOMMENT (ID,SZOVEG) values (6,'Im√°dom ezeket a sz√°mokat!');
-Insert into KOMMENT (ID,SZOVEG) values (7,'Nagyon √©rdekes √©s tanuls√°gos vide√≥! K√∂sz√∂n√∂m a megoszt√°st!');
-Insert into KOMMENT (ID,SZOVEG) values (8,'Fantasztikus vide√≥, nagyon j√≥l √∂ssze van √°ll√≠tva!');
-Insert into KOMMENT (ID,SZOVEG) values (9,'Ez a vide√≥ nagyon inspir√°l√≥ volt sz√°momra, k√∂sz√∂n√∂m!');
-Insert into KOMMENT (ID,SZOVEG) values (10,'Remek munka, a szerkeszt√©s is zseni√°lis!');
-Insert into KOMMENT (ID,SZOVEG) values (11,'Ez a vide√≥ egyszer≈±en leny≈±g√∂z≈ë, nem tudok betelni vele!');
-Insert into KOMMENT (ID,SZOVEG) values (12,'Nagyon informat√≠v, √©rdekes t√©ma volt, k√∂sz√∂n√∂m a r√©szletes bemutat√°st!');
-Insert into KOMMENT (ID,SZOVEG) values (13,'Gratul√°lok a vide√≥hoz, nagyon √©lveztem n√©zni!');
-Insert into KOMMENT (ID,SZOVEG) values (14,'Szuper vide√≥, t√∂k√©letes sz√≥rakoz√°s volt!');
-Insert into KOMMENT (ID,SZOVEG) values (15,'K√≠v√°ncsi vagyok, hogy mik lesznek a k√∂vetkez≈ë vide√≥k t√©m√°i!');
-Insert into KOMMENT (ID,SZOVEG) values (16,'Nagyon profi munka, egyenesen zseni√°lis!');
-Insert into KOMMENT (ID,SZOVEG) values (17,'Ez a vide√≥ sz√°momra √∫j megvil√°g√≠t√°sba helyezte a dolgokat, k√∂sz√∂n√∂m!');
-Insert into KOMMENT (ID,SZOVEG) values (18,'K√©rem folytassa, mindig nagy √∂r√∂m n√©zni a vide√≥it!');
-Insert into KOMMENT (ID,SZOVEG) values (19,'Hihetetlen munka, gratul√°lok a kreativit√°shoz!');
-Insert into KOMMENT (ID,SZOVEG) values (20,'K√∂sz√∂n√∂m a vide√≥t, remek√ºl telt el vele az id≈ëm!');
-Insert into KOMMENT (ID,SZOVEG) values (21,'T√∂k√©letesen √∂sszerakott vide√≥, minden elismer√©sem!');
-Insert into KOMMENT (ID,SZOVEG) values (22,'Ez a vide√≥ val√≥ban meg√©rintett, k√∂sz√∂n√∂m, hogy megosztottad!');
-Insert into KOMMENT (ID,SZOVEG) values (23,'Nagyon √©lveztem, j√≥ volt id≈ët t√∂lteni vele!');
-Insert into KOMMENT (ID,SZOVEG) values (24,'Ez a vide√≥ √©letre kelt sz√°momra egy t√©m√°t, amir≈ël eddig keveset tudtam, k√∂sz√∂n√∂m!');
-Insert into KOMMENT (ID,SZOVEG) values (25,'K√∂sz√∂n√∂m a vide√≥t, v√°rom a k√∂vetkez≈ët!');
-Insert into KOMMENT (ID,SZOVEG) values (26,'Ez a vide√≥ egyszer≈±en mag√°val ragadott, k√∂sz√∂n√∂m a sz√≥rakoz√°st!');
-Insert into KOMMENT (ID,SZOVEG) values (27,'Fantasztikus vide√≥, k√∂sz√∂n√∂m, hogy megmutattad nek√ºnk!');
-Insert into KOMMENT (ID,SZOVEG) values (28,'Remek√ºl fel√©p√≠tett vide√≥, minden dics√©retet meg√©rdemel!');
-Insert into KOMMENT (ID,SZOVEG) values (29,'Ez a vide√≥ megvil√°g√≠totta a napomat, k√∂sz√∂n√∂m!');
-Insert into KOMMENT (ID,SZOVEG) values (30,'K√≠v√°ncsi vagyok, hogy mi lesz a k√∂vetkez≈ë t√©m√°ja a vide√≥knak!');
-Insert into KOMMENT (ID,SZOVEG) values (31,'Nagyon √©rdekes √©s tanuls√°gos volt a vide√≥, k√∂sz√∂n√∂m a megoszt√°st!');
-Insert into KOMMENT (ID,SZOVEG) values (32,'K√∂sz√∂n√∂m, hogy megosztottad vel√ºnk ezt a fantasztikus vide√≥t!');
-Insert into KOMMENT (ID,SZOVEG) values (33,'Gratul√°lok a vide√≥hoz, zseni√°lis munka!');
-Insert into KOMMENT (ID,SZOVEG) values (34,'Ez a vide√≥ sz√°momra inspir√°l√≥ volt, k√∂sz√∂n√∂m a bemutat√°st!');
-Insert into KOMMENT (ID,SZOVEG) values (35,'Fantasztikus tartalom, √∂r√∂m volt n√©zni!');
+Insert into KOMMENT (ID,SZOVEG) values (2,'Kˆszˆnˆm a jÛ tippeket!');
+Insert into KOMMENT (ID,SZOVEG) values (3,'Ez nagyon hasznos volt, kˆszˆnˆm!');
+Insert into KOMMENT (ID,SZOVEG) values (4,'Szerintem ez az egyik legjobb videÛ!');
+Insert into KOMMENT (ID,SZOVEG) values (5,'Nagyon Èrdekes tÈma, jÛl megÌrtad.');
+Insert into KOMMENT (ID,SZOVEG) values (6,'Im·dom ezeket a sz·mokat!');
+Insert into KOMMENT (ID,SZOVEG) values (7,'Nagyon Èrdekes Ès tanuls·gos videÛ! Kˆszˆnˆm a megoszt·st!');
+Insert into KOMMENT (ID,SZOVEG) values (8,'Fantasztikus videÛ, nagyon jÛl ˆssze van ·llÌtva!');
+Insert into KOMMENT (ID,SZOVEG) values (9,'Ez a videÛ nagyon inspir·lÛ volt sz·momra, kˆszˆnˆm!');
+Insert into KOMMENT (ID,SZOVEG) values (10,'Remek munka, a szerkesztÈs is zseni·lis!');
+Insert into KOMMENT (ID,SZOVEG) values (11,'Ez a videÛ egyszer?en leny?gˆz?, nem tudok betelni vele!');
+Insert into KOMMENT (ID,SZOVEG) values (12,'Nagyon informatÌv, Èrdekes tÈma volt, kˆszˆnˆm a rÈszletes bemutat·st!');
+Insert into KOMMENT (ID,SZOVEG) values (13,'Gratul·lok a videÛhoz, nagyon Èlveztem nÈzni!');
+Insert into KOMMENT (ID,SZOVEG) values (14,'Szuper videÛ, tˆkÈletes szÛrakoz·s volt!');
+Insert into KOMMENT (ID,SZOVEG) values (15,'KÌv·ncsi vagyok, hogy mik lesznek a kˆvetkez? videÛk tÈm·i!');
+Insert into KOMMENT (ID,SZOVEG) values (16,'Nagyon profi munka, egyenesen zseni·lis!');
+Insert into KOMMENT (ID,SZOVEG) values (17,'Ez a videÛ sz·momra ˙j megvil·gÌt·sba helyezte a dolgokat, kˆszˆnˆm!');
+Insert into KOMMENT (ID,SZOVEG) values (18,'KÈrem folytassa, mindig nagy ˆrˆm nÈzni a videÛit!');
+Insert into KOMMENT (ID,SZOVEG) values (19,'Hihetetlen munka, gratul·lok a kreativit·shoz!');
+Insert into KOMMENT (ID,SZOVEG) values (20,'Kˆszˆnˆm a videÛt, remek¸l telt el vele az id?m!');
+Insert into KOMMENT (ID,SZOVEG) values (21,'TˆkÈletesen ˆsszerakott videÛ, minden elismerÈsem!');
+Insert into KOMMENT (ID,SZOVEG) values (22,'Ez a videÛ valÛban megÈrintett, kˆszˆnˆm, hogy megosztottad!');
+Insert into KOMMENT (ID,SZOVEG) values (23,'Nagyon Èlveztem, jÛ volt id?t tˆlteni vele!');
+Insert into KOMMENT (ID,SZOVEG) values (24,'Ez a videÛ Èletre kelt sz·momra egy tÈm·t, amir?l eddig keveset tudtam, kˆszˆnˆm!');
+Insert into KOMMENT (ID,SZOVEG) values (25,'Kˆszˆnˆm a videÛt, v·rom a kˆvetkez?t!');
+Insert into KOMMENT (ID,SZOVEG) values (26,'Ez a videÛ egyszer?en mag·val ragadott, kˆszˆnˆm a szÛrakoz·st!');
+Insert into KOMMENT (ID,SZOVEG) values (27,'Fantasztikus videÛ, kˆszˆnˆm, hogy megmutattad nek¸nk!');
+Insert into KOMMENT (ID,SZOVEG) values (28,'Remek¸l felÈpÌtett videÛ, minden dicsÈretet megÈrdemel!');
+Insert into KOMMENT (ID,SZOVEG) values (29,'Ez a videÛ megvil·gÌtotta a napomat, kˆszˆnˆm!');
+Insert into KOMMENT (ID,SZOVEG) values (30,'KÌv·ncsi vagyok, hogy mi lesz a kˆvetkez? tÈm·ja a videÛknak!');
+Insert into KOMMENT (ID,SZOVEG) values (31,'Nagyon Èrdekes Ès tanuls·gos volt a videÛ, kˆszˆnˆm a megoszt·st!');
+Insert into KOMMENT (ID,SZOVEG) values (32,'Kˆszˆnˆm, hogy megosztottad vel¸nk ezt a fantasztikus videÛt!');
+Insert into KOMMENT (ID,SZOVEG) values (33,'Gratul·lok a videÛhoz, zseni·lis munka!');
+Insert into KOMMENT (ID,SZOVEG) values (34,'Ez a videÛ sz·momra inspir·lÛ volt, kˆszˆnˆm a bemutat·st!');
+Insert into KOMMENT (ID,SZOVEG) values (35,'Fantasztikus tartalom, ˆrˆm volt nÈzni!');
 REM INSERTING into VIDEO
 SET DEFINE OFF;
-Insert into VIDEO (ID,CIM,LEIRAS,PATH) values (1,'Els≈ë vide√≥m','Ez az els≈ë vide√≥m a weboldalon.','videos/1.mp4');
-Insert into VIDEO (ID,CIM,LEIRAS,PATH) values (2,'10 √©rdekes tal√°lm√°ny amikr≈ël m√©g nem hallott√°l!','Ezekr≈ël a l√©legzetel√°ll√≠t√≥ tal√°lm√°nyokr√≥l nem besz√©l senki, pedig megv√°ltoztathatj√°k a vil√°got!','videos/2.mp4');
-Insert into VIDEO (ID,CIM,LEIRAS,PATH) values (3,'90-es √©vek legjobbjai','Ebbe a kis mixbe √∂sszeszedtem a kedvenc sz√°maimat a 90-es √©vekb≈ël. Rem√©lem tetszik, j√≥ sz√≥rakoz√°st!','videos/3.mp4');
-Insert into VIDEO (ID,CIM,LEIRAS,PATH) values (4,'Feri finom k√≥kuszgoly√≥ receptje','A k√≥kuszgoly√≥ nagyon finom desszert. Ebben a vide√≥ban a saj√°t receptemet fogom megosztani veletek. J√≥ √©tv√°gyat!','videos/4.mp4');
-Insert into VIDEO (ID,CIM,LEIRAS,PATH) values (5,'80-as √©vek legjobbjai','Ebbe a kis mixbe √∂sszeszedtem a kedvenc sz√°maimat a 80-as √©vekb≈ël. Rem√©lem tetszik, j√≥ sz√≥rakoz√°st!','videos/5.mp4');
+Insert into VIDEO (ID,CIM,LEIRAS,PATH,THUMBNAIL) values (1,'Els? videÛm','Ez az els? videÛm a weboldalon.','1.mp4','1.jpg');
+Insert into VIDEO (ID,CIM,LEIRAS,PATH,THUMBNAIL) values (2,'10 Èrdekes tal·lm·ny amikr?l mÈg nem hallott·l!','Ezekr?l a lÈlegzetel·llÌtÛ tal·lm·nyokrÛl nem beszÈl senki, pedig megv·ltoztathatj·k a vil·got!','2.mp4','2.jpg');
+Insert into VIDEO (ID,CIM,LEIRAS,PATH,THUMBNAIL) values (3,'90-es Èvek legjobbjai','Ebbe a kis mixbe ˆsszeszedtem a kedvenc sz·maimat a 90-es Èvekb?l. RemÈlem tetszik, jÛ szÛrakoz·st!','3.mp4','3.jpg');
+Insert into VIDEO (ID,CIM,LEIRAS,PATH,THUMBNAIL) values (4,'Feri finom kÛkuszgolyÛ receptje','A kÛkuszgolyÛ nagyon finom desszert. Ebben a videÛban a saj·t receptemet fogom megosztani veletek. JÛ Ètv·gyat!','4.mp4','4.jpg');
+Insert into VIDEO (ID,CIM,LEIRAS,PATH,THUMBNAIL) values (5,'80-as Èvek legjobbjai','Ebbe a kis mixbe ˆsszeszedtem a kedvenc sz·maimat a 80-as Èvekb?l. RemÈlem tetszik, jÛ szÛrakoz·st!','5.mp4','5.jpg');
 REM INSERTING into VIDEO_CIMKE
 SET DEFINE OFF;
 Insert into VIDEO_CIMKE (VIDEO_ID,CIMKE_ID) values (1,9);
@@ -435,20 +437,50 @@ Insert into VIDEO_KATEGORIA (VIDEO_ID,KATEGORIA_ID) values (3,3);
 Insert into VIDEO_KATEGORIA (VIDEO_ID,KATEGORIA_ID) values (4,13);
 Insert into VIDEO_KATEGORIA (VIDEO_ID,KATEGORIA_ID) values (5,3);
 --------------------------------------------------------
---  DDL for Index PATH
+--  DDL for Index CIM
 --------------------------------------------------------
 
-  CREATE UNIQUE INDEX "PATH" ON "VIDEO" ("PATH") 
-  PCTFREE 10 INITRANS 2 MAXTRANS 255 
+  CREATE UNIQUE INDEX "CIM" ON "CIMKE" ("CIM") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
   STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
   PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
   BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
   TABLESPACE "USERS" ;
 --------------------------------------------------------
---  DDL for Index KOMMENT_ID
+--  DDL for Index CIM_UNIQUE
 --------------------------------------------------------
 
-  CREATE INDEX "KOMMENT_ID" ON "EREDET" ("KOMMENT_ID") 
+  CREATE UNIQUE INDEX "CIM_UNIQUE" ON "KATEGORIA" ("CIM") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS" ;
+--------------------------------------------------------
+--  DDL for Index EMAIL_JELSZO
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "EMAIL_JELSZO" ON "FELHASZNALO" ("EMAIL", "JELSZO") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS" ;
+--------------------------------------------------------
+--  DDL for Index PATH
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "PATH" ON "VIDEO" ("PATH") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS" ;
+--------------------------------------------------------
+--  DDL for Index THUMBNAIL_UNIQUE
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "THUMBNAIL_UNIQUE" ON "VIDEO" ("THUMBNAIL") 
   PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
   STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
   PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
@@ -465,6 +497,16 @@ Insert into VIDEO_KATEGORIA (VIDEO_ID,KATEGORIA_ID) values (5,3);
   BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
   TABLESPACE "USERS" ;
 --------------------------------------------------------
+--  DDL for Index CIMKE_ID
+--------------------------------------------------------
+
+  CREATE INDEX "CIMKE_ID" ON "VIDEO_CIMKE" ("CIMKE_ID") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS" ;
+--------------------------------------------------------
 --  DDL for Index KATEGORIA_ID
 --------------------------------------------------------
 
@@ -475,31 +517,11 @@ Insert into VIDEO_KATEGORIA (VIDEO_ID,KATEGORIA_ID) values (5,3);
   BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
   TABLESPACE "USERS" ;
 --------------------------------------------------------
---  DDL for Index EMAIL_JELSZO
+--  DDL for Index KOMMENT_ID
 --------------------------------------------------------
 
-  CREATE UNIQUE INDEX "EMAIL_JELSZO" ON "FELHASZNALO" ("EMAIL", "JELSZO") 
-  PCTFREE 10 INITRANS 2 MAXTRANS 255 
-  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
-  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
-  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
-  TABLESPACE "USERS" ;
---------------------------------------------------------
---  DDL for Index CIM_UNIQUE
---------------------------------------------------------
-
-  CREATE UNIQUE INDEX "CIM_UNIQUE" ON "KATEGORIA" ("CIM") 
-  PCTFREE 10 INITRANS 2 MAXTRANS 255 
-  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
-  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
-  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
-  TABLESPACE "USERS" ;
---------------------------------------------------------
---  DDL for Index CIM
---------------------------------------------------------
-
-  CREATE UNIQUE INDEX "CIM" ON "CIMKE" ("CIM") 
-  PCTFREE 10 INITRANS 2 MAXTRANS 255 
+  CREATE INDEX "KOMMENT_ID" ON "EREDET" ("KOMMENT_ID") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
   STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
   PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
   BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
@@ -515,25 +537,16 @@ Insert into VIDEO_KATEGORIA (VIDEO_ID,KATEGORIA_ID) values (5,3);
   BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
   TABLESPACE "USERS" ;
 --------------------------------------------------------
---  DDL for Index CIMKE_ID
---------------------------------------------------------
-
-  CREATE INDEX "CIMKE_ID" ON "VIDEO_CIMKE" ("CIMKE_ID") 
-  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
-  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
-  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
-  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
-  TABLESPACE "USERS" ;
---------------------------------------------------------
 --  DDL for Trigger CIMKE_SEQ_TR
 --------------------------------------------------------
 
   CREATE OR REPLACE EDITIONABLE TRIGGER "CIMKE_SEQ_TR" 
 BEFORE INSERT ON cimke
 FOR EACH ROW
- WHEN (NEW.id IS NULL) BEGIN
+  WHEN (NEW.id IS NULL) BEGIN
   SELECT cimke_seq.NEXTVAL INTO :NEW.id FROM DUAL;
 END;
+
 
 /
 ALTER TRIGGER "CIMKE_SEQ_TR" ENABLE;
@@ -544,9 +557,10 @@ ALTER TRIGGER "CIMKE_SEQ_TR" ENABLE;
   CREATE OR REPLACE EDITIONABLE TRIGGER "FELHASZNALO_SEQ_TR" 
 BEFORE INSERT ON felhasznalo
 FOR EACH ROW
- WHEN (NEW.id IS NULL) BEGIN
+  WHEN (NEW.id IS NULL) BEGIN
   SELECT felhasznalo_seq.NEXTVAL INTO :NEW.id FROM DUAL;
 END;
+
 
 /
 ALTER TRIGGER "FELHASZNALO_SEQ_TR" ENABLE;
@@ -557,9 +571,10 @@ ALTER TRIGGER "FELHASZNALO_SEQ_TR" ENABLE;
   CREATE OR REPLACE EDITIONABLE TRIGGER "KATEGORIA_SEQ_TR" 
 BEFORE INSERT ON kategoria
 FOR EACH ROW
- WHEN (NEW.id IS NULL) BEGIN
+  WHEN (NEW.id IS NULL) BEGIN
   SELECT kategoria_seq.NEXTVAL INTO :NEW.id FROM DUAL;
 END;
+
 
 /
 ALTER TRIGGER "KATEGORIA_SEQ_TR" ENABLE;
@@ -569,9 +584,10 @@ ALTER TRIGGER "KATEGORIA_SEQ_TR" ENABLE;
 
   CREATE OR REPLACE EDITIONABLE TRIGGER "KOMMENT_SEQ_TR" 
  BEFORE INSERT ON komment FOR EACH ROW
-  WHEN (NEW.id IS NULL) BEGIN
+   WHEN (NEW.id IS NULL) BEGIN
  SELECT komment_seq.NEXTVAL INTO :NEW.id FROM DUAL;
 END;
+
 
 /
 ALTER TRIGGER "KOMMENT_SEQ_TR" ENABLE;
@@ -581,9 +597,10 @@ ALTER TRIGGER "KOMMENT_SEQ_TR" ENABLE;
 
   CREATE OR REPLACE EDITIONABLE TRIGGER "VIDEO_SEQ_TR" 
  BEFORE INSERT ON video FOR EACH ROW
-  WHEN (NEW.id IS NULL) BEGIN
+   WHEN (NEW.id IS NULL) BEGIN
  SELECT video_seq.NEXTVAL INTO :NEW.id FROM DUAL;
 END;
+
 
 /
 ALTER TRIGGER "VIDEO_SEQ_TR" ENABLE;
@@ -591,165 +608,172 @@ ALTER TRIGGER "VIDEO_SEQ_TR" ENABLE;
 --  Constraints for Table IRO
 --------------------------------------------------------
 
-  ALTER TABLE "IRO" ADD PRIMARY KEY ("FELHASZNALO_ID", "KOMMENT_ID")
-  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 
-  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
-  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
-  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
-  TABLESPACE "USERS"  ENABLE;
-  ALTER TABLE "IRO" MODIFY ("IDO" NOT NULL ENABLE);
-  ALTER TABLE "IRO" MODIFY ("KOMMENT_ID" NOT NULL ENABLE);
   ALTER TABLE "IRO" MODIFY ("FELHASZNALO_ID" NOT NULL ENABLE);
---------------------------------------------------------
---  Constraints for Table KOMMENT
---------------------------------------------------------
-
-  ALTER TABLE "KOMMENT" ADD PRIMARY KEY ("ID")
-  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 
+  ALTER TABLE "IRO" MODIFY ("KOMMENT_ID" NOT NULL ENABLE);
+  ALTER TABLE "IRO" MODIFY ("IDO" NOT NULL ENABLE);
+  ALTER TABLE "IRO" ADD PRIMARY KEY ("FELHASZNALO_ID", "KOMMENT_ID")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
   STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
   PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
   BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
   TABLESPACE "USERS"  ENABLE;
-  ALTER TABLE "KOMMENT" MODIFY ("SZOVEG" NOT NULL ENABLE);
-  ALTER TABLE "KOMMENT" MODIFY ("ID" NOT NULL ENABLE);
---------------------------------------------------------
---  Constraints for Table VIDEO_CIMKE
---------------------------------------------------------
-
-  ALTER TABLE "VIDEO_CIMKE" ADD PRIMARY KEY ("VIDEO_ID", "CIMKE_ID")
-  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 
-  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
-  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
-  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
-  TABLESPACE "USERS"  ENABLE;
-  ALTER TABLE "VIDEO_CIMKE" MODIFY ("CIMKE_ID" NOT NULL ENABLE);
-  ALTER TABLE "VIDEO_CIMKE" MODIFY ("VIDEO_ID" NOT NULL ENABLE);
---------------------------------------------------------
---  Constraints for Table VIDEO
---------------------------------------------------------
-
-  ALTER TABLE "VIDEO" ADD CONSTRAINT "PATH" UNIQUE ("PATH")
-  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 
-  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
-  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
-  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
-  TABLESPACE "USERS"  ENABLE;
-  ALTER TABLE "VIDEO" ADD PRIMARY KEY ("ID")
-  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 
-  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
-  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
-  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
-  TABLESPACE "USERS"  ENABLE;
-  ALTER TABLE "VIDEO" MODIFY ("PATH" NOT NULL ENABLE);
-  ALTER TABLE "VIDEO" MODIFY ("LEIRAS" NOT NULL ENABLE);
-  ALTER TABLE "VIDEO" MODIFY ("CIM" NOT NULL ENABLE);
-  ALTER TABLE "VIDEO" MODIFY ("ID" NOT NULL ENABLE);
---------------------------------------------------------
---  Constraints for Table EREDET
---------------------------------------------------------
-
-  ALTER TABLE "EREDET" ADD PRIMARY KEY ("KOMMENT_ID", "VIDEO_ID")
-  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 
-  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
-  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
-  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
-  TABLESPACE "USERS"  ENABLE;
-  ALTER TABLE "EREDET" MODIFY ("VIDEO_ID" NOT NULL ENABLE);
-  ALTER TABLE "EREDET" MODIFY ("KOMMENT_ID" NOT NULL ENABLE);
---------------------------------------------------------
---  Constraints for Table VIDEO_KATEGORIA
---------------------------------------------------------
-
-  ALTER TABLE "VIDEO_KATEGORIA" ADD PRIMARY KEY ("VIDEO_ID", "KATEGORIA_ID")
-  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 
-  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
-  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
-  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
-  TABLESPACE "USERS"  ENABLE;
-  ALTER TABLE "VIDEO_KATEGORIA" MODIFY ("KATEGORIA_ID" NOT NULL ENABLE);
-  ALTER TABLE "VIDEO_KATEGORIA" MODIFY ("VIDEO_ID" NOT NULL ENABLE);
---------------------------------------------------------
---  Constraints for Table KATEGORIA
---------------------------------------------------------
-
-  ALTER TABLE "KATEGORIA" ADD CONSTRAINT "CIM_UNIQUE" UNIQUE ("CIM")
-  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 
-  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
-  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
-  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
-  TABLESPACE "USERS"  ENABLE;
-  ALTER TABLE "KATEGORIA" ADD PRIMARY KEY ("ID")
-  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 
-  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
-  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
-  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
-  TABLESPACE "USERS"  ENABLE;
-  ALTER TABLE "KATEGORIA" MODIFY ("CIM" NOT NULL ENABLE);
-  ALTER TABLE "KATEGORIA" MODIFY ("ID" NOT NULL ENABLE);
---------------------------------------------------------
---  Constraints for Table FELTOLTO
---------------------------------------------------------
-
-  ALTER TABLE "FELTOLTO" ADD PRIMARY KEY ("FELHASZNALO_ID", "VIDEO_ID")
-  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 
-  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
-  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
-  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
-  TABLESPACE "USERS"  ENABLE;
-  ALTER TABLE "FELTOLTO" MODIFY ("DATUM" NOT NULL ENABLE);
-  ALTER TABLE "FELTOLTO" MODIFY ("VIDEO_ID" NOT NULL ENABLE);
-  ALTER TABLE "FELTOLTO" MODIFY ("FELHASZNALO_ID" NOT NULL ENABLE);
---------------------------------------------------------
---  Constraints for Table FELHASZNALO
---------------------------------------------------------
-
-  ALTER TABLE "FELHASZNALO" ADD CONSTRAINT "EMAIL_JELSZO" UNIQUE ("EMAIL", "JELSZO")
-  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 
-  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
-  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
-  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
-  TABLESPACE "USERS"  ENABLE;
-  ALTER TABLE "FELHASZNALO" ADD PRIMARY KEY ("ID")
-  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 
-  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
-  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
-  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
-  TABLESPACE "USERS"  ENABLE;
-  ALTER TABLE "FELHASZNALO" MODIFY ("ADMIN" NOT NULL ENABLE);
-  ALTER TABLE "FELHASZNALO" MODIFY ("JELSZO" NOT NULL ENABLE);
-  ALTER TABLE "FELHASZNALO" MODIFY ("EMAIL" NOT NULL ENABLE);
-  ALTER TABLE "FELHASZNALO" MODIFY ("NEV" NOT NULL ENABLE);
-  ALTER TABLE "FELHASZNALO" MODIFY ("ID" NOT NULL ENABLE);
 --------------------------------------------------------
 --  Constraints for Table CIMKE
 --------------------------------------------------------
 
-  ALTER TABLE "CIMKE" ADD CONSTRAINT "CIM" UNIQUE ("CIM")
-  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 
-  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
-  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
-  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
-  TABLESPACE "USERS"  ENABLE;
-  ALTER TABLE "CIMKE" ADD PRIMARY KEY ("ID")
-  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 
-  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
-  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
-  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
-  TABLESPACE "USERS"  ENABLE;
-  ALTER TABLE "CIMKE" MODIFY ("CIM" NOT NULL ENABLE);
   ALTER TABLE "CIMKE" MODIFY ("ID" NOT NULL ENABLE);
+  ALTER TABLE "CIMKE" MODIFY ("CIM" NOT NULL ENABLE);
+  ALTER TABLE "CIMKE" ADD PRIMARY KEY ("ID")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS"  ENABLE;
+  ALTER TABLE "CIMKE" ADD CONSTRAINT "CIM" UNIQUE ("CIM")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS"  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table KATEGORIA
+--------------------------------------------------------
+
+  ALTER TABLE "KATEGORIA" MODIFY ("ID" NOT NULL ENABLE);
+  ALTER TABLE "KATEGORIA" MODIFY ("CIM" NOT NULL ENABLE);
+  ALTER TABLE "KATEGORIA" ADD PRIMARY KEY ("ID")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS"  ENABLE;
+  ALTER TABLE "KATEGORIA" ADD CONSTRAINT "CIM_UNIQUE" UNIQUE ("CIM")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS"  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table KOMMENT
+--------------------------------------------------------
+
+  ALTER TABLE "KOMMENT" MODIFY ("ID" NOT NULL ENABLE);
+  ALTER TABLE "KOMMENT" MODIFY ("SZOVEG" NOT NULL ENABLE);
+  ALTER TABLE "KOMMENT" ADD PRIMARY KEY ("ID")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS"  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table FELHASZNALO
+--------------------------------------------------------
+
+  ALTER TABLE "FELHASZNALO" MODIFY ("ID" NOT NULL ENABLE);
+  ALTER TABLE "FELHASZNALO" MODIFY ("NEV" NOT NULL ENABLE);
+  ALTER TABLE "FELHASZNALO" MODIFY ("EMAIL" NOT NULL ENABLE);
+  ALTER TABLE "FELHASZNALO" MODIFY ("JELSZO" NOT NULL ENABLE);
+  ALTER TABLE "FELHASZNALO" MODIFY ("ADMIN" NOT NULL ENABLE);
+  ALTER TABLE "FELHASZNALO" ADD PRIMARY KEY ("ID")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS"  ENABLE;
+  ALTER TABLE "FELHASZNALO" ADD CONSTRAINT "EMAIL_JELSZO" UNIQUE ("EMAIL", "JELSZO")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS"  ENABLE;
 --------------------------------------------------------
 --  Constraints for Table KEDVENC
 --------------------------------------------------------
 
+  ALTER TABLE "KEDVENC" MODIFY ("FELHASZNALO_ID" NOT NULL ENABLE);
+  ALTER TABLE "KEDVENC" MODIFY ("VIDEO_ID" NOT NULL ENABLE);
   ALTER TABLE "KEDVENC" ADD PRIMARY KEY ("FELHASZNALO_ID", "VIDEO_ID")
-  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
   STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
   PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
   BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
   TABLESPACE "USERS"  ENABLE;
-  ALTER TABLE "KEDVENC" MODIFY ("VIDEO_ID" NOT NULL ENABLE);
-  ALTER TABLE "KEDVENC" MODIFY ("FELHASZNALO_ID" NOT NULL ENABLE);
+--------------------------------------------------------
+--  Constraints for Table VIDEO_CIMKE
+--------------------------------------------------------
+
+  ALTER TABLE "VIDEO_CIMKE" MODIFY ("VIDEO_ID" NOT NULL ENABLE);
+  ALTER TABLE "VIDEO_CIMKE" MODIFY ("CIMKE_ID" NOT NULL ENABLE);
+  ALTER TABLE "VIDEO_CIMKE" ADD PRIMARY KEY ("VIDEO_ID", "CIMKE_ID")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS"  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table VIDEO_KATEGORIA
+--------------------------------------------------------
+
+  ALTER TABLE "VIDEO_KATEGORIA" MODIFY ("VIDEO_ID" NOT NULL ENABLE);
+  ALTER TABLE "VIDEO_KATEGORIA" MODIFY ("KATEGORIA_ID" NOT NULL ENABLE);
+  ALTER TABLE "VIDEO_KATEGORIA" ADD PRIMARY KEY ("VIDEO_ID", "KATEGORIA_ID")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS"  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table VIDEO
+--------------------------------------------------------
+
+  ALTER TABLE "VIDEO" ADD CONSTRAINT "THUMBNAIL_NOT_NULL" CHECK ("THUMBNAIL" IS NOT NULL) ENABLE;
+  ALTER TABLE "VIDEO" ADD CONSTRAINT "THUMBNAIL_UNIQUE" UNIQUE ("THUMBNAIL")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS"  ENABLE;
+  ALTER TABLE "VIDEO" MODIFY ("ID" NOT NULL ENABLE);
+  ALTER TABLE "VIDEO" MODIFY ("CIM" NOT NULL ENABLE);
+  ALTER TABLE "VIDEO" MODIFY ("LEIRAS" NOT NULL ENABLE);
+  ALTER TABLE "VIDEO" MODIFY ("PATH" NOT NULL ENABLE);
+  ALTER TABLE "VIDEO" ADD PRIMARY KEY ("ID")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS"  ENABLE;
+  ALTER TABLE "VIDEO" ADD CONSTRAINT "PATH" UNIQUE ("PATH")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS"  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table FELTOLTO
+--------------------------------------------------------
+
+  ALTER TABLE "FELTOLTO" MODIFY ("FELHASZNALO_ID" NOT NULL ENABLE);
+  ALTER TABLE "FELTOLTO" MODIFY ("VIDEO_ID" NOT NULL ENABLE);
+  ALTER TABLE "FELTOLTO" MODIFY ("DATUM" NOT NULL ENABLE);
+  ALTER TABLE "FELTOLTO" ADD PRIMARY KEY ("FELHASZNALO_ID", "VIDEO_ID")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS"  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table EREDET
+--------------------------------------------------------
+
+  ALTER TABLE "EREDET" MODIFY ("KOMMENT_ID" NOT NULL ENABLE);
+  ALTER TABLE "EREDET" MODIFY ("VIDEO_ID" NOT NULL ENABLE);
+  ALTER TABLE "EREDET" ADD PRIMARY KEY ("KOMMENT_ID", "VIDEO_ID")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS"  ENABLE;
 --------------------------------------------------------
 --  Ref Constraints for Table EREDET
 --------------------------------------------------------
