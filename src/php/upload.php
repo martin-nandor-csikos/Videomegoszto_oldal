@@ -30,12 +30,14 @@ else if (($_FILES["file"]["size"] > 104857600) || !in_array($extension, $allowed
     oci_execute($get_next_id);
     oci_fetch($get_next_id);
     $id = oci_result($get_next_id, "NEXTVAL");
-    $fname = $id . ".mp4";
-    $insert_new_video = oci_parse($conn, "INSERT INTO VIDEO (ID, CIM, LEIRAS, PATH) VALUES (:id, :title, :descript, :fname)");
+    $vfname = $id . ".mp4";
+    $tfname = $id . ".jpg";
+    $insert_new_video = oci_parse($conn, "INSERT INTO VIDEO (ID, CIM, LEIRAS, PATH, THUMBNAIL) VALUES (:id, :title, :descript, :vfname, :tfname)");
     oci_bind_by_name($insert_new_video, ':id', $id);
     oci_bind_by_name($insert_new_video, ':title', $title);
     oci_bind_by_name($insert_new_video, ':descript', $desc);
-    oci_bind_by_name($insert_new_video, ':fname', $fname);
+    oci_bind_by_name($insert_new_video, ':vfname', $vfname);
+    oci_bind_by_name($insert_new_video, ':tfname', $tfname);
     oci_execute($insert_new_video);
     
     $link_category = oci_parse($conn, "INSERT INTO VIDEO_KATEGORIA (VIDEO_ID, KATEGORIA_ID) VALUES (:video_id, :kategoria_id)");
@@ -76,7 +78,7 @@ else if (($_FILES["file"]["size"] > 104857600) || !in_array($extension, $allowed
     }
 
     move_uploaded_file($_FILES["file"]["tmp_name"],
-    $_SERVER["DOCUMENT_ROOT"] . "/videos/" . $fname);
+    $_SERVER["DOCUMENT_ROOT"] . "/media/videos/" . $vfname);
     
     $_SESSION['success'] = TRUE;
 }
