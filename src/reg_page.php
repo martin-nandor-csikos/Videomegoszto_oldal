@@ -3,7 +3,7 @@ session_start();
 
 if (isset($_SESSION['hibak'])) {
     foreach ($_SESSION['hibak'] as $hiba) {
-        echo $hiba . "<br>";
+        echo "<p>" . $hiba . "</p>";
     }
 
     unset($_SESSION['hibak']);
