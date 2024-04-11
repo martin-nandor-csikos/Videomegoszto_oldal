@@ -39,7 +39,7 @@ if (!isset($_SESSION['database_connection_success'])) {
             // Feltöltés gomb
             echo "<a href=\"upload_page.php\">Videó feltöltés</a><br />";
         } else {
-            // Admin panel
+            echo "<a href=\"delete_page.php\">Videó törlése</a><br />";
         }
         echo "<a href=\"php/logout.php\">Kijelentkezés</a>";
     } else {
