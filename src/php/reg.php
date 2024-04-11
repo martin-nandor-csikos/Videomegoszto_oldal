@@ -54,21 +54,22 @@ if (isset($email) && isset($username) && isset($pass) && isset($pass_re)) {
             oci_bind_by_name($insert_felhasznalo, ':email', $email);
             oci_bind_by_name($insert_felhasznalo, ':hashed_pass', $hashed_pass);
             oci_execute($insert_felhasznalo);
-        } else {
+       } else {
             $insert_felhasznalo = oci_parse($conn, "INSERT INTO felhasznalo (nev, email, jelszo, admin) VALUES (:username, :email, :hashed_pass, :admin)");
+            $isAdmin = 1;
             oci_bind_by_name($insert_felhasznalo, ':username', $username);
             oci_bind_by_name($insert_felhasznalo, ':email', $email);
             oci_bind_by_name($insert_felhasznalo, ':hashed_pass', $hashed_pass);
-            oci_bind_by_name($insert_felhasznalo, ':admin', 1);
+            oci_bind_by_name($insert_felhasznalo, ':admin', $isAdmin);
             oci_execute($insert_felhasznalo);
         }
 
         $_SESSION['reg_success'] = "Sikeres regisztráció.";
-        header("Location: ./../login_page.php");   
+        header("Location: ./../login_page.php");
+    } else {
+        $_SESSION['hibak'] = $hibak;
+        header("Location: ./../reg_page.php");
     }
-
-    $_SESSION['hibak'] = $hibak;
-    header("Location: ./../reg_page.php");
 }
 
 oci_close($conn);
