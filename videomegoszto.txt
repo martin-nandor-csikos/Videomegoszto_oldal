@@ -302,6 +302,8 @@ Insert into FELHASZNALO (ID,NEV,EMAIL,JELSZO,ADMIN) values (2,'TechNinja42','tec
 Insert into FELHASZNALO (ID,NEV,EMAIL,JELSZO,ADMIN) values (3,'MusicLover87','musiclover87@example.com','musiclover',0);
 Insert into FELHASZNALO (ID,NEV,EMAIL,JELSZO,ADMIN) values (4,'BookWorm24','bookworm24@example.com','bookworm',0);
 Insert into FELHASZNALO (ID,NEV,EMAIL,JELSZO,ADMIN) values (5,'ScienceGeek99','sciencegeek99@example.com','sciencegeek',0);
+Insert into FELHASZNALO (ID,NEV,EMAIL,JELSZO,ADMIN) values (6,'admin1','admin1@admin.com','$2y$10$h02PKRPjvB6jYU/IjUwyBewTZxVxce3X91sAyActNvf.327btGJde',1);
+
 REM INSERTING into FELTOLTO
 SET DEFINE OFF;
 Insert into FELTOLTO (FELHASZNALO_ID,VIDEO_ID,DATUM) values (4,1,to_date('10-MAR-24','DD-MON-RR'));
