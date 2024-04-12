@@ -6,6 +6,7 @@ RUN apt-get update && apt-get install -y \
     wget \
     libaio1 \
     libaio-dev \
+    ffmpeg \
     && docker-php-ext-install zip
 
 RUN a2enmod rewrite
