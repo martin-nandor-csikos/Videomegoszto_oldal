@@ -6,6 +6,10 @@ namespace Composer\Autoload;
 
 class ComposerStaticInit4e2fad0377e7a3a0133737ca66cf8f47
 {
+    public static $files = array (
+        '6e3fae29631ef280660b3cdad06f25a8' => __DIR__ . '/..' . '/symfony/deprecation-contracts/function.php',
+    );
+
     public static $prefixLengthsPsr4 = array (
         'S' => 
         array (

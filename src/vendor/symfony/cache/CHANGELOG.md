@@ -1,12 +1,6 @@
 CHANGELOG
 =========
 
-7.0
----
-
- * Add parameter `$isSameDatabase` to `DoctrineDbalAdapter::configureSchema()`
- * Drop support for Postgres < 9.5 and SQL Server < 2008 in `DoctrineDbalAdapter`
-
 6.4
 ---
 

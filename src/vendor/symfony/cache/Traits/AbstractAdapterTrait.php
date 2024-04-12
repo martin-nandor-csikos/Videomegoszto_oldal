@@ -43,9 +43,9 @@ trait AbstractAdapterTrait
     private array $ids = [];
 
     /**
-     * The maximum length to enforce for identifiers or null when no limit applies.
+     * @var int|null The maximum length to enforce for identifiers or null when no limit applies
      */
-    protected ?int $maxIdLength = null;
+    protected $maxIdLength;
 
     /**
      * Fetches several cache items.
@@ -281,7 +281,10 @@ trait AbstractAdapterTrait
         throw new \BadMethodCallException('Cannot serialize '.__CLASS__);
     }
 
-    public function __wakeup(): void
+    /**
+     * @return void
+     */
+    public function __wakeup()
     {
         throw new \BadMethodCallException('Cannot unserialize '.__CLASS__);
     }

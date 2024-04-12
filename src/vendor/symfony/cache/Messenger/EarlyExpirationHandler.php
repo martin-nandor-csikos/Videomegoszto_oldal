@@ -29,7 +29,10 @@ class EarlyExpirationHandler
         $this->reverseContainer = $reverseContainer;
     }
 
-    public function __invoke(EarlyExpirationMessage $message): void
+    /**
+     * @return void
+     */
+    public function __invoke(EarlyExpirationMessage $message)
     {
         $item = $message->getItem();
         $metadata = $item->getMetadata();
