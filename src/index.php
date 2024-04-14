@@ -18,7 +18,6 @@ if (!isset($_SESSION['database_connection_success'])) {
         $_SESSION['database_connection_success'] = true;
     }
 }
-
 ?>
 
 <!DOCTYPE html>
@@ -46,8 +45,21 @@ if (!isset($_SESSION['database_connection_success'])) {
         echo "<a href=\"login_page.php\">Bejelentkezés</a>";
     }
     ?>
-    <!-- Search bar helye -->
+    
+    <form action="index.php" method="get" enctype="multipart/form-data">
+    <input type="text" name="term" id="term" required />
+    <input type="submit" name="search_term_submit" value="Keresés" />
+    </form>
 
+    <?php
+    if (isset($_GET["search_term_submit"])) {
+        require "php/oracle_conn.php";
+        require("php/search_term.php");
+
+        search_term($conn, 10);
+        unset($_POST['search_term_submit']);
+    }
+    ?>
     <!-- Kategóriák felsorolva -->
 
     <!-- Legnépszerűbb videók -->
