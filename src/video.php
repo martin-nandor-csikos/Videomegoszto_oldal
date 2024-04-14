@@ -18,7 +18,7 @@ if (isset($_SESSION['hibak'])) {
 $video_id = $_GET["video_id"];
 
 $search = oci_parse($conn,
-    "SELECT VIDEO.ID, VIDEO.CIM, VIDEO.PATH, FELHASZNALO.NEV, FELTOLTO.DATUM
+    "SELECT VIDEO.ID, VIDEO.CIM, VIDEO.PATH, VIDEO.LEIRAS, FELHASZNALO.NEV, FELTOLTO.DATUM
     FROM VIDEO
     INNER JOIN FELTOLTO
     ON VIDEO.ID = FELTOLTO.VIDEO_ID
@@ -31,6 +31,10 @@ if (!oci_fetch($search)) {
     echo "Videó nem található!";
 }
 $video_cim = oci_result($search, "CIM");
+$video_path = oci_result($search, "PATH");
+$video_leiras = oci_result($search, "LEIRAS");
+$felhasznalo_nev = oci_result($search, "NEV");
+$feltolto_datum = oci_result($search, "DATUM");
 
 ?>
 
@@ -44,6 +48,17 @@ $video_cim = oci_result($search, "CIM");
     ?>
 </head>
 <body>
+<?php
+    echo "
+    <video height=400 controls>
+        <source src='media/videos/" . $video_path . "' type='video/mp4'>
+    </video><br />
+    " . $video_cim . "<br />
+    " . $video_leiras . "<br />
+    Feltöltötte: " . $felhasznalo_nev . "<br />
+    Feltöltés időpontja: " . $feltolto_datum . "<br />
+    ";
+?>
 
 <a href="index.php">Vissza</a>
 
