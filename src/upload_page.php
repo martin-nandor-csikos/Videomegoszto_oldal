@@ -67,5 +67,7 @@ while (oci_fetch($get_categories)) {
 <input type="submit" name="submit" value="Feltöltés" />
 </form>
 
+<a href="index.php">Vissza</a>
+
 </body>
 </html>
