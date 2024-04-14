@@ -1,6 +1,5 @@
 <?php
-function search_term($count) {
-    require_once "oracle_conn.php";
+function search_term($conn, $count) {
 
     $term = $_GET["term"];
 

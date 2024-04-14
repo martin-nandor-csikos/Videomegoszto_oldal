@@ -14,8 +14,15 @@ if (isset($_SESSION['hibak'])) {
     unset($_SESSION['hibak']);
 }
 
-
 $video_id = $_GET["video_id"];
+if (isset($_POST['comment_submit'])) {
+    require "php/comment.php";
+    
+    $comment_text = $_POST["comment_text"];
+    comment_submit($conn, $comment_text, $video_id);
+    unset($_POST['comment_submit']);
+}
+
 
 // Videó adatok lekérése
 $search = oci_parse($conn,
@@ -71,10 +78,17 @@ oci_execute($comments);
     " . $video_leiras . "<br />
     Feltöltötte: " . $felhasznalo_nev . "<br />
     Feltöltés időpontja: " . $feltolto_datum . "<br />
+    <form action='video.php?video_id=" . $video_id . "' method='post'>
+        <label for='comment_text'><span>Komment írás:</span></label>
+        <input type='text' name='comment_text' id='comment_text' required />
+        <br />
+        <input type='submit' name='comment_submit' value='Küldés' />
+    </form>
     Kommentek:<br />";
 
     while (oci_fetch($comments)) {
-        echo oci_result($comments, "NEV") . ": " . oci_result($comments, "SZOVEG") . "<br />";
+        echo "<div class='comment'>" . oci_result($comments, "NEV") . ": " . oci_result($comments, "SZOVEG") . "<br />
+        ". oci_result($comments, "IDO") . "</div><br />";
     }
 ?>
 

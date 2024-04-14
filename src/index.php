@@ -47,9 +47,11 @@ if (!isset($_SESSION['database_connection_success'])) {
 
     <?php
     if (isset($_GET["search_term_submit"])) {
+        require "php/oracle_conn.php";
         require("php/search_term.php");
 
-        search_term(10);
+        search_term($conn, 10);
+        unset($_POST['search_term_submit']);
     }
     ?>
     <!-- Kategóriák felsorolva -->
