@@ -1,6 +1,7 @@
 <?php
 
 require "oracle_conn.php";
+require $_SERVER["DOCUMENT_ROOT"] . '/vendor/autoload.php';
 
 session_start();
 
@@ -79,6 +80,19 @@ else if (($_FILES["file"]["size"] > 104857600) || !in_array($extension, $allowed
 
     move_uploaded_file($_FILES["file"]["tmp_name"],
     $_SERVER["DOCUMENT_ROOT"] . "/media/videos/" . $vfname);
+
+    $movie = $_SERVER["DOCUMENT_ROOT"] . "/media/videos/" . $vfname;
+    $ffprobe = FFMpeg\FFProbe::create();
+    $sec = intdiv($ffprobe
+           ->streams($movie)
+           ->videos()                   
+           ->first()                  
+           ->get('duration'), 10);
+    
+    $ffmpeg = FFMpeg\FFMpeg::create();
+    $video = $ffmpeg->open($movie);
+    $frame = $video->frame(FFMpeg\Coordinate\TimeCode::fromSeconds($sec));
+    $frame->save($_SERVER["DOCUMENT_ROOT"] . "/media/thumbnails/" . $tfname);
     
     $_SESSION['success'] = TRUE;
 }
