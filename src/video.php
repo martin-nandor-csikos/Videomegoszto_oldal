@@ -17,6 +17,7 @@ if (isset($_SESSION['hibak'])) {
 
 $video_id = $_GET["video_id"];
 
+// Videó adatok lekérése
 $search = oci_parse($conn,
     "SELECT VIDEO.ID, VIDEO.CIM, VIDEO.PATH, VIDEO.LEIRAS, FELHASZNALO.NEV, FELTOLTO.DATUM
     FROM VIDEO
@@ -36,6 +37,19 @@ $video_leiras = oci_result($search, "LEIRAS");
 $felhasznalo_nev = oci_result($search, "NEV");
 $feltolto_datum = oci_result($search, "DATUM");
 
+// Komment adatok lekérése
+$comments = oci_parse($conn,
+    "SELECT FELHASZNALO.NEV, IRO.IDO, KOMMENT.SZOVEG
+    FROM KOMMENT
+    INNER JOIN EREDET
+    ON KOMMENT.ID = EREDET.KOMMENT_ID
+    INNER JOIN IRO
+    ON KOMMENT.ID = IRO.KOMMENT_ID
+    INNER JOIN FELHASZNALO
+    ON FELHASZNALO.ID = IRO.FELHASZNALO_ID
+    WHERE EREDET.VIDEO_ID = :video_id");
+oci_bind_by_name($comments, ":video_id", $video_id);
+oci_execute($comments);
 ?>
 
 <!DOCTYPE html>
@@ -57,7 +71,11 @@ $feltolto_datum = oci_result($search, "DATUM");
     " . $video_leiras . "<br />
     Feltöltötte: " . $felhasznalo_nev . "<br />
     Feltöltés időpontja: " . $feltolto_datum . "<br />
-    ";
+    Kommentek:<br />";
+
+    while (oci_fetch($comments)) {
+        echo oci_result($comments, "NEV") . ": " . oci_result($comments, "SZOVEG") . "<br />";
+    }
 ?>
 
 <a href="index.php">Vissza</a>
