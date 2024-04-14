@@ -20,7 +20,7 @@ function search_term($count) {
     while (oci_fetch($search)) {
         echo "
         <div class='search_result' id='" . oci_result($search, "ID") . "_vid'>
-            <img src='/media/thumbnails/" . oci_result($search, "ID") . ".jpg' height=100/ ><br />
+            <img src='/media/thumbnails/" . oci_result($search, "ID") . ".jpg'/ ><br />
             " . oci_result($search, "CIM") . "<br />
             Feltöltötte: " . oci_result($search, "NEV") . "<br />
             Ekkor: " . oci_result($search, "DATUM") . "<br />
