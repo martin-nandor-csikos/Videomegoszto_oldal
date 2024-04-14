@@ -26,7 +26,7 @@ if (isset($_POST['comment_submit'])) {
 
 // Videó adatok lekérése
 $search = oci_parse($conn,
-    "SELECT VIDEO.ID, VIDEO.CIM, VIDEO.PATH, VIDEO.LEIRAS, FELHASZNALO.NEV, FELTOLTO.DATUM
+    "SELECT VIDEO.ID, VIDEO.CIM, VIDEO.PATH, VIDEO.LEIRAS, FELHASZNALO.NEV, TO_CHAR(FELTOLTO.DATUM, 'YYYY. MM. DD.') AS DATUM
     FROM VIDEO
     INNER JOIN FELTOLTO
     ON VIDEO.ID = FELTOLTO.VIDEO_ID
@@ -46,7 +46,7 @@ $feltolto_datum = oci_result($search, "DATUM");
 
 // Komment adatok lekérése
 $comments = oci_parse($conn,
-    "SELECT FELHASZNALO.NEV, IRO.IDO, KOMMENT.SZOVEG
+    "SELECT FELHASZNALO.NEV, TO_CHAR(IRO.IDO, 'YYYY. MM. DD. HH24:MI:SS') AS IDO, KOMMENT.SZOVEG
     FROM KOMMENT
     INNER JOIN EREDET
     ON KOMMENT.ID = EREDET.KOMMENT_ID
@@ -54,7 +54,8 @@ $comments = oci_parse($conn,
     ON KOMMENT.ID = IRO.KOMMENT_ID
     INNER JOIN FELHASZNALO
     ON FELHASZNALO.ID = IRO.FELHASZNALO_ID
-    WHERE EREDET.VIDEO_ID = :video_id");
+    WHERE EREDET.VIDEO_ID = :video_id
+    ORDER BY IRO.IDO DESC");
 oci_bind_by_name($comments, ":video_id", $video_id);
 oci_execute($comments);
 ?>
@@ -77,7 +78,7 @@ oci_execute($comments);
     " . $video_cim . "<br />
     " . $video_leiras . "<br />
     Feltöltötte: " . $felhasznalo_nev . "<br />
-    Feltöltés időpontja: " . $feltolto_datum . "<br />
+    Feltöltés dátuma: " . $feltolto_datum . "<br />
     <form action='video.php?video_id=" . $video_id . "' method='post'>
         <label for='comment_text'><span>Komment írás:</span></label>
         <input type='text' name='comment_text' id='comment_text' required />
@@ -85,14 +86,17 @@ oci_execute($comments);
         <input type='submit' name='comment_submit' value='Küldés' />
     </form>
     Kommentek:<br />";
+?>
 
+<a href="index.php">Vissza</a>
+
+<?php
     while (oci_fetch($comments)) {
         echo "<div class='comment'>" . oci_result($comments, "NEV") . ": " . oci_result($comments, "SZOVEG") . "<br />
         ". oci_result($comments, "IDO") . "</div><br />";
     }
 ?>
 
-<a href="index.php">Vissza</a>
 
 </body>
 </html>
