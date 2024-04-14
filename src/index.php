@@ -47,7 +47,6 @@ if (!isset($_SESSION['database_connection_success'])) {
 
     <?php
     if (isset($_GET["search_term_submit"])) {
-        echo $_GET["term"];
         require("php/search_term.php");
 
         search_term(10);
