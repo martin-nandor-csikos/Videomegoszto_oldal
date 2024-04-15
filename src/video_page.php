@@ -43,6 +43,21 @@ $video_leiras = oci_result($search, "LEIRAS");
 $felhasznalo_nev = oci_result($search, "NEV");
 $feltolto_datum = oci_result($search, "DATUM");
 
+// Kedvenc állapot lekérése
+if (isset($_SESSION['user_id'])){
+    $felhasznalo_id = $_SESSION['user_id'];
+
+    $check_like = oci_parse($conn,"SELECT *
+        FROM KEDVENC
+        WHERE VIDEO_ID = :video_id
+        AND FELHASZNALO_ID = :felhasznalo_id");
+    oci_bind_by_name($check_like, "video_id", $video_id);
+    oci_bind_by_name($check_like, "felhasznalo_id", $felhasznalo_id);
+    oci_execute($check_like);
+    // $kedvenc true, ha a videó a felhasználó kedvencei között van
+    $kedvenc = oci_fetch($check_like);
+}
+
 // Komment adatok lekérése
 $comments = oci_parse($conn,
     "SELECT FELHASZNALO.NEV, TO_CHAR(IRO.IDO, 'YYYY. MM. DD. HH24:MI:SS') AS IDO, KOMMENT.SZOVEG
@@ -77,16 +92,23 @@ oci_execute($comments);
     " . $video_cim . "<br />
     " . $video_leiras . "<br />
     Feltöltötte: " . $felhasznalo_nev . "<br />
-    Feltöltés dátuma: " . $feltolto_datum . "<br />
+    Feltöltés dátuma: " . $feltolto_datum . "<br />";
+    if (isset($_SESSION['user_id'])) {
+        if (!$kedvenc){
+            echo "
+            <form action='PHP/like.php' method='post'>
+                <input type='submit' name='like_video' value='Kedvenc'/><br />
+                <input type='hidden' id='video_id' name='video_id' value='" . $video_id . "' />
+            </form>";
+        }
+    }
+    
+
+    echo "
     <form action='video_page.php?video_id=" . $video_id . "' method='post'>
         <label for='comment_text'><span>Komment írás:</span></label>
         <input type='text' name='comment_text' id='comment_text' required />
         <input type='submit' name='comment_submit' value='Küldés' />
-    </form>
-
-    <form action='PHP/like.php' method='post'>
-        <input type='submit' name='like_video' value='Kedvenc'/><br />
-        <input type='hidden' id='video_id' name='video_id' value='" . $video_id . "' />
     </form>";
 ?>
 
