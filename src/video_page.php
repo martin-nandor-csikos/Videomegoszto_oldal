@@ -113,8 +113,10 @@ oci_execute($comments);
     " . $video_leiras . "<br />
     Feltöltötte: " . $felhasznalo_nev . "<br />
     Feltöltés dátuma: " . $feltolto_datum . "<br />
-    Kategória: " . $kategoria . "<br />
-    Címkék: " . implode(", ", $cimkek) . "<br />";
+    Kategória: " . $kategoria . "<br />";
+
+    if ($cimkek) echo "Címkék: " . implode(", ", $cimkek) . "<br />";
+    else echo "A videónak nincs címkéje.";
     
     if (isset($_SESSION['user_id'])) {
         if ($kedvenc){
