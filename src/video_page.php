@@ -28,6 +28,7 @@ $video_leiras = oci_result($search, "LEIRAS");
 $felhasznalo_nev = oci_result($search, "NEV");
 $feltolto_datum = oci_result($search, "DATUM");
 
+// Kategória lekérése
 $search_category = oci_parse($conn, "
     SELECT CIM
     FROM KATEGORIA
@@ -38,6 +39,20 @@ oci_bind_by_name($search_category, "video_id", $video_id);
 oci_execute($search_category);
 oci_fetch($search_category);
 $kategoria = oci_result($search_category, "CIM");
+
+// Címkék lekérése
+$search_tags = oci_parse($conn, "
+    SELECT CIM
+    FROM CIMKE
+    INNER JOIN VIDEO_CIMKE
+    ON CIMKE.ID = VIDEO_CIMKE.CIMKE_ID
+    WHERE VIDEO_CIMKE.VIDEO_ID = :video_id");
+oci_bind_by_name($search_tags, "video_id", $video_id);
+oci_execute($search_tags);
+$cimkek = [];
+while (oci_fetch($search_tags)) {
+    $cimkek[] = oci_result($search_tags, "CIM");
+}
 
 // Kedvenc állapot lekérése
 if (isset($_SESSION['user_id'])){
@@ -85,6 +100,7 @@ oci_execute($comments);
         foreach ($_SESSION['hibak'] as $hiba) {
             echo $hiba . "<br>";
         }
+        unset($hiba);
 
         unset($_SESSION['hibak']);
     }
@@ -97,7 +113,8 @@ oci_execute($comments);
     " . $video_leiras . "<br />
     Feltöltötte: " . $felhasznalo_nev . "<br />
     Feltöltés dátuma: " . $feltolto_datum . "<br />
-    Kategória: " . $kategoria . "<br />";
+    Kategória: " . $kategoria . "<br />
+    Címkék: " . implode(", ", $cimkek) . "<br />";
     
     if (isset($_SESSION['user_id'])) {
         if ($kedvenc){
