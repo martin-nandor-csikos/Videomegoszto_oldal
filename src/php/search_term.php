@@ -14,7 +14,8 @@ function search_term($conn, $count) {
         ON VIDEO.ID = FELTOLTO.VIDEO_ID
         INNER JOIN FELHASZNALO
         ON FELHASZNALO.ID = FELTOLTO.FELHASZNALO_ID
-        WHERE VIDEO.CIM LIKE '%" . $term . "%'
+        WHERE LOWER(CONVERT(VIDEO.CIM, 'US7ASCII'))
+        LIKE LOWER(CONVERT('%" . $term . "%', 'US7ASCII'))
         ORDER BY VIDEO.ID
         FETCH FIRST :count ROWS ONLY");
     oci_bind_by_name($search, ":count", $count);
