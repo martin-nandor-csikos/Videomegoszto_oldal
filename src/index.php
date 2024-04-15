@@ -27,6 +27,14 @@ if (!isset($_SESSION['database_connection_success'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Főoldal - Videómegosztó</title>
+
+    <style>
+        .search_result {
+            border: solid black 1px;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+    </style>
 </head>
 
 <body>
