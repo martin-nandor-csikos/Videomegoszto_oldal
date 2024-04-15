@@ -15,13 +15,6 @@ if (isset($_SESSION['hibak'])) {
 }
 
 $video_id = $_GET["video_id"];
-if (isset($_POST['comment_submit'])) {
-    require "php/comment.php";
-    
-    $comment_text = $_POST["comment_text"];
-    comment_submit($conn, $comment_text, $video_id);
-    unset($_POST['comment_submit']);
-}
 
 // Videó adatok lekérése
 $search = oci_parse($conn,
