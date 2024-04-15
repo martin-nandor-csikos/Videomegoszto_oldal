@@ -28,6 +28,17 @@ $video_leiras = oci_result($search, "LEIRAS");
 $felhasznalo_nev = oci_result($search, "NEV");
 $feltolto_datum = oci_result($search, "DATUM");
 
+$search_category = oci_parse($conn, "
+    SELECT CIM
+    FROM KATEGORIA
+    INNER JOIN VIDEO_KATEGORIA
+    ON KATEGORIA.ID = VIDEO_KATEGORIA.KATEGORIA_ID
+    WHERE VIDEO_KATEGORIA.VIDEO_ID = :video_id");
+oci_bind_by_name($search_category, "video_id", $video_id);
+oci_execute($search_category);
+oci_fetch($search_category);
+$kategoria = oci_result($search_category, "CIM");
+
 // Kedvenc állapot lekérése
 if (isset($_SESSION['user_id'])){
     $felhasznalo_id = $_SESSION['user_id'];
@@ -85,7 +96,8 @@ oci_execute($comments);
     " . $video_cim . "<br />
     " . $video_leiras . "<br />
     Feltöltötte: " . $felhasznalo_nev . "<br />
-    Feltöltés dátuma: " . $feltolto_datum . "<br />";
+    Feltöltés dátuma: " . $feltolto_datum . "<br />
+    Kategória: " . $kategoria . "<br />";
     
     if (isset($_SESSION['user_id'])) {
         if ($kedvenc){
