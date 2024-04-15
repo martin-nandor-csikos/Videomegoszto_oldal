@@ -109,19 +109,19 @@ oci_execute($comments);
             </form>";
         }
     }
-    
-    echo "
-    <form action='video_page.php?video_id=" . $video_id . "' method='post'>
-        <label for='comment_text'><span>Komment írás:</span></label>
-        <input type='text' name='comment_text' id='comment_text' required />
-        <input type='submit' name='comment_submit' value='Küldés' />
-    </form>";
 ?>
-
 
 <a href="index.php">Vissza</a><br />
 
 <?php
+    echo "
+    <form action='php/comment.php' method='post'>
+        <label for='comment_text'>Komment írás:</label>
+        <input type='text' name='comment_text' id='comment_text' required />
+        <input type='hidden' id='video_id' name='video_id' value='" . $video_id . "' />
+        <input type='submit' name='comment_submit' value='Küldés' />
+    </form>";
+
     echo "Kommentek:<br />";
     while (oci_fetch($comments)) {
         echo "<div class='comment'>" . oci_result($comments, "NEV") . ": " . oci_result($comments, "SZOVEG") . "<br />
