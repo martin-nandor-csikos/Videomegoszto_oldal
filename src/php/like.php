@@ -3,6 +3,13 @@
 require_once "oracle_conn.php";
 session_start();
 
+if (empty($video_id)) {
+    $hibak[] = "Hiba komment írása közben! (üres videó azonosító)";
+    $_SESSION['hibak'] = $hibak;
+    header('Location: ' . $_SERVER['HTTP_REFERER']);
+    exit;
+}
+
 $video_id = $_POST['video_id'];
 $felhasznalo_id = $_SESSION['user_id'];
 

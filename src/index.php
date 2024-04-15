@@ -64,7 +64,9 @@ if (!isset($_SESSION['database_connection_success'])) {
         require "php/oracle_conn.php";
         require("php/search_term.php");
 
-        search_term($conn, 10);
+        // Maximum megjelenített találatok száma
+        $result_count = 10;
+        search_term($conn, $result_count);
         unset($_POST['search_term_submit']);
     }
     ?>

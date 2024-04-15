@@ -3,8 +3,23 @@
 require_once "oracle_conn.php";
 session_start();
 
+$hibak = [];
+
 $comment_text = $_POST['comment_text'];
 $video_id = $_POST['video_id'];
+
+if (empty($comment_text)) {
+    $hibak[] = "Hiba komment írása közben: üres komment szöveg";
+    $_SESSION['hibak'] = $hibak;
+    header('Location: ' . $_SERVER['HTTP_REFERER']);
+    exit;
+}
+else if (empty($video_id)) {
+    $hibak[] = "Hiba komment írása közben: üres videó azonosító";
+    $_SESSION['hibak'] = $hibak;
+    header('Location: ' . $_SERVER['HTTP_REFERER']);
+    exit;
+}
 
 $get_next_id = oci_parse($conn, "SELECT KOMMENT_SEQ.NEXTVAL FROM DUAL");
 oci_execute($get_next_id);

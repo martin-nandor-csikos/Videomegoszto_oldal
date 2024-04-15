@@ -2,6 +2,10 @@
 function search_term($conn, $count) {
 
     $term = $_GET["term"];
+    if (empty($term)) {
+        echo "Hiba keresés közben: üres keresés szöveg";
+        return;
+    }
 
     $search = oci_parse($conn,
         "SELECT VIDEO.ID, VIDEO.CIM, VIDEO.THUMBNAIL, FELHASZNALO.NEV, FELTOLTO.DATUM
