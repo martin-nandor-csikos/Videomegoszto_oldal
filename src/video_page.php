@@ -93,8 +93,15 @@ oci_execute($comments);
     " . $video_leiras . "<br />
     Feltöltötte: " . $felhasznalo_nev . "<br />
     Feltöltés dátuma: " . $feltolto_datum . "<br />";
+    
     if (isset($_SESSION['user_id'])) {
-        if (!$kedvenc){
+        if ($kedvenc){
+            echo "
+            <form action='PHP/like.php' method='post'>
+                <input type='submit' name='unlike_video' value='Törlés kedvencekből'/><br />
+                <input type='hidden' id='video_id' name='video_id' value='" . $video_id . "' />
+            </form>";
+        } else {
             echo "
             <form action='PHP/like.php' method='post'>
                 <input type='submit' name='like_video' value='Kedvenc'/><br />
@@ -103,7 +110,6 @@ oci_execute($comments);
         }
     }
     
-
     echo "
     <form action='video_page.php?video_id=" . $video_id . "' method='post'>
         <label for='comment_text'><span>Komment írás:</span></label>
