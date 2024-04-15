@@ -33,7 +33,7 @@ function search_term($conn, $count) {
     Array.from(results).forEach((res) => {
         let video_id = res.id.split('_')[0];
         res.addEventListener('click', function() {
-            window.location.href = '/video.php?video_id=' + video_id;
+            window.location.href = '/video_page.php?video_id=' + video_id;
         });
     });
     </script>

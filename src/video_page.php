@@ -79,7 +79,7 @@ oci_execute($comments);
     " . $video_leiras . "<br />
     Feltöltötte: " . $felhasznalo_nev . "<br />
     Feltöltés dátuma: " . $feltolto_datum . "<br />
-    <form action='video.php?video_id=" . $video_id . "' method='post'>
+    <form action='video_page.php?video_id=" . $video_id . "' method='post'>
         <label for='comment_text'><span>Komment írás:</span></label>
         <input type='text' name='comment_text' id='comment_text' required />
         <br />
