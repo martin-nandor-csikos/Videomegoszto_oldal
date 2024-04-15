@@ -23,7 +23,6 @@ if (isset($_POST['comment_submit'])) {
     unset($_POST['comment_submit']);
 }
 
-
 // Videó adatok lekérése
 $search = oci_parse($conn,
     "SELECT VIDEO.ID, VIDEO.CIM, VIDEO.PATH, VIDEO.LEIRAS, FELHASZNALO.NEV, TO_CHAR(FELTOLTO.DATUM, 'YYYY. MM. DD.') AS DATUM
@@ -82,15 +81,20 @@ oci_execute($comments);
     <form action='video_page.php?video_id=" . $video_id . "' method='post'>
         <label for='comment_text'><span>Komment írás:</span></label>
         <input type='text' name='comment_text' id='comment_text' required />
-        <br />
         <input type='submit' name='comment_submit' value='Küldés' />
     </form>
-    Kommentek:<br />";
+
+    <form action='PHP/like.php' method='post'>
+        <input type='submit' name='like_video' value='Kedvenc'/><br />
+        <input type='hidden' id='video_id' name='video_id' value='" . $video_id . "' />
+    </form>";
 ?>
 
-<a href="index.php">Vissza</a>
+
+<a href="index.php">Vissza</a><br />
 
 <?php
+    echo "Kommentek:<br />";
     while (oci_fetch($comments)) {
         echo "<div class='comment'>" . oci_result($comments, "NEV") . ": " . oci_result($comments, "SZOVEG") . "<br />
         ". oci_result($comments, "IDO") . "</div><br />";
