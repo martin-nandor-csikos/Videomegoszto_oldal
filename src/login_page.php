@@ -1,24 +1,9 @@
 <?php
 session_start();
 
-if (isset($_SESSION['login_error'])) {
-    echo $_SESSION['login_error'];
-    unset($_SESSION['login_error']);
-}
-
-if (isset($_SESSION['reg_success'])) {
-    echo $_SESSION['reg_success'];
-    unset($_SESSION['reg_success']);
-}
-
 // Ha már be van lépve a user, akkor ne tudja megnyitni újra az oldalt
 if (isset($_SESSION['user_id'])) {
     header("Location: index.php");
-}
-
-if (isset($_SESSION['sikeres_reg'])) {
-    echo "<p>Sikeres regisztráció!</p>";
-    unset($_SESSION['sikeres_reg']);
 }
 ?>
 
@@ -32,7 +17,18 @@ if (isset($_SESSION['sikeres_reg'])) {
 </head>
 
 <body>
+    <?php
+    if (isset($_SESSION['login_error'])) {
+        echo $_SESSION['login_error'];
+        unset($_SESSION['login_error']);
+    }
 
+    if (isset($_SESSION['reg_success'])) {
+        echo $_SESSION['reg_success'];
+        unset($_SESSION['reg_success']);
+    }
+    ?>
+    
     <form action="php/login.php" method="post">
         <label for="user_email">Email cím</label>
         <input type="email" name="user_email" id="user_email" maxlength="50" required>

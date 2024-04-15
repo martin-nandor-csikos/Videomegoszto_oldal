@@ -1,14 +1,6 @@
 <?php
 session_start();
 
-if (isset($_SESSION['hibak'])) {
-    foreach ($_SESSION['hibak'] as $hiba) {
-        echo "<p>" . $hiba . "</p>";
-    }
-
-    unset($_SESSION['hibak']);
-}
-
 if (isset($_SESSION['user_id'])) {
     header("Location: index.php");
 }
@@ -24,7 +16,16 @@ if (isset($_SESSION['user_id'])) {
 </head>
 
 <body>
+    <?php
+    if (isset($_SESSION['hibak'])) {
+        foreach ($_SESSION['hibak'] as $hiba) {
+            echo "<p>" . $hiba . "</p>";
+        }
 
+        unset($_SESSION['hibak']);
+    }
+    ?>
+    
     <form action="php/reg.php" method="post">
         <label for="reg_email">Email cím</label>
         <input type="email" name="reg_email" id="reg_email" maxlength="50" required>

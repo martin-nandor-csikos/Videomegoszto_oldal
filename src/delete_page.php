@@ -6,16 +6,6 @@ require "./php/oracle_conn.php";
 if (!isset($_SESSION['user_isadmin']) || $_SESSION['user_isadmin'] == 0) {
   header("Location: index.php");
 }
-
-if (isset($_SESSION['delete_success'])) {
-  echo $_SESSION['delete_success'];
-  unset($_SESSION['delete_success']);
-}
-
-if (isset($_SESSION['delete_error'])) {
-  echo $_SESSION['delete_error'];
-  unset($_SESSION['delete_error']);
-}
 ?>
 
 <!DOCTYPE html>
@@ -28,6 +18,17 @@ if (isset($_SESSION['delete_error'])) {
 </head>
 
 <body>
+  <?php
+    if (isset($_SESSION['delete_success'])) {
+      echo $_SESSION['delete_success'];
+      unset($_SESSION['delete_success']);
+    }
+    
+    if (isset($_SESSION['delete_error'])) {
+      echo $_SESSION['delete_error'];
+      unset($_SESSION['delete_error']);
+    }
+  ?>
 
   <form action="./delete_page.php" method="get">
     <label for="video_cim">Videó címe:</label>

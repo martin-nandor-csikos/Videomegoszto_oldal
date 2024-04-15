@@ -1,23 +1,5 @@
 <?php
 session_start();
-
-if (isset($_SESSION['user_name'])) {
-    echo "<p>Üdvözöljük, " . $_SESSION['user_name'] . "!</p>";
-}
-
-// Database connection popup alert. Csak akkor jön elő, ha legelső alkalommal nyílik meg az oldal
-if (!isset($_SESSION['database_connection_success'])) {
-    require "./php/oracle_conn.php";
-
-    if ($conn) {
-        echo '
-        <script type="text/javascript">
-            window.onload = function () { alert("Az adatbázissal való kapcsolat létrejött."); } 
-        </script>';
-
-        $_SESSION['database_connection_success'] = true;
-    }
-}
 ?>
 
 <!DOCTYPE html>
@@ -40,6 +22,24 @@ if (!isset($_SESSION['database_connection_success'])) {
 <body>
 
     <?php
+    if (isset($_SESSION['user_name'])) {
+        echo "<p>Üdvözöljük, " . $_SESSION['user_name'] . "!</p>";
+    }
+
+    // Database connection popup alert. Csak akkor jön elő, ha legelső alkalommal nyílik meg az oldal
+    if (!isset($_SESSION['database_connection_success'])) {
+        require "./php/oracle_conn.php";
+
+        if ($conn) {
+            echo '
+            <script type="text/javascript">
+                window.onload = function () { alert("Az adatbázissal való kapcsolat létrejött."); } 
+            </script>';
+
+            $_SESSION['database_connection_success'] = true;
+        }
+    }
+    
     if (isset($_SESSION['user_id'])) {
         if ($_SESSION['user_isadmin'] == 0) {
             // Kedvelt videók gomb

@@ -6,14 +6,6 @@ session_start();
 
 $hibak = [];
 
-if (isset($_SESSION['hibak'])) {
-    foreach ($_SESSION['hibak'] as $hiba) {
-        echo $hiba . "<br>";
-    }
-
-    unset($_SESSION['hibak']);
-}
-
 $video_id = $_GET["video_id"];
 
 // Videó adatok lekérése
@@ -78,6 +70,14 @@ oci_execute($comments);
 </head>
 <body>
 <?php
+    if (isset($_SESSION['hibak'])) {
+        foreach ($_SESSION['hibak'] as $hiba) {
+            echo $hiba . "<br>";
+        }
+
+        unset($_SESSION['hibak']);
+    }
+
     echo "
     <video height=400 controls>
         <source src='media/videos/" . $video_path . "' type='video/mp4'>
