@@ -1,7 +1,7 @@
 <?php
 function search_term($conn, $count) {
 
-    $term = $_GET["term"];
+    $term = "%" . $_GET["term"] . "%";
     if (empty($term)) {
         echo "Hiba keresés közben: üres keresés szöveg";
         return;
@@ -15,9 +15,10 @@ function search_term($conn, $count) {
         INNER JOIN FELHASZNALO
         ON FELHASZNALO.ID = FELTOLTO.FELHASZNALO_ID
         WHERE LOWER(CONVERT(VIDEO.CIM, 'US7ASCII'))
-        LIKE LOWER(CONVERT('%" . $term . "%', 'US7ASCII'))
+        LIKE LOWER(CONVERT(:term, 'US7ASCII'))
         ORDER BY VIDEO.ID
         FETCH FIRST :count ROWS ONLY");
+    oci_bind_by_name($search, ":term", $term);
     oci_bind_by_name($search, ":count", $count);
     oci_execute($search);
 
@@ -31,6 +32,7 @@ function search_term($conn, $count) {
         </div>
         ";
     }
+    
 
     echo "
     <script>
