@@ -1,3 +1,15 @@
+DROP TABLE CIMKE;
+DROP TABLE EREDET;
+DROP TABLE FELHASZNALO;
+DROP TABLE FELTOLTO;
+DROP TABLE IRO;
+DROP TABLE KATEGORIA;
+DROP TABLE KEDVENC;
+DROP TABLE KOMMENT;
+DROP TABLE VIDEO;
+DROP TABLE VIDEO_CIMKE;
+DROP TABLE VIDEO_KATEGORIA;
+
 --------------------------------------------------------
 --  File created - Tuesday-April-09-2024   
 --------------------------------------------------------
@@ -297,11 +309,11 @@ Insert into EREDET (KOMMENT_ID,VIDEO_ID) values (34,2);
 Insert into EREDET (KOMMENT_ID,VIDEO_ID) values (35,3);
 REM INSERTING into FELHASZNALO
 SET DEFINE OFF;
-Insert into FELHASZNALO (ID,NEV,EMAIL,JELSZO,ADMIN) values (1,'Feri91','feri91@example.com','feri',0);
-Insert into FELHASZNALO (ID,NEV,EMAIL,JELSZO,ADMIN) values (2,'TechNinja42','techninja42@example.com','techninja',0);
-Insert into FELHASZNALO (ID,NEV,EMAIL,JELSZO,ADMIN) values (3,'MusicLover87','musiclover87@example.com','musiclover',0);
-Insert into FELHASZNALO (ID,NEV,EMAIL,JELSZO,ADMIN) values (4,'BookWorm24','bookworm24@example.com','bookworm',0);
-Insert into FELHASZNALO (ID,NEV,EMAIL,JELSZO,ADMIN) values (5,'ScienceGeek99','sciencegeek99@example.com','sciencegeek',0);
+Insert into FELHASZNALO (ID,NEV,EMAIL,JELSZO,ADMIN) values (1,'Feri91','feri91@example.com','$2y$10$h02PKRPjvB6jYU/IjUwyBewTZxVxce3X91sAyActNvf.327btGJde',0);
+Insert into FELHASZNALO (ID,NEV,EMAIL,JELSZO,ADMIN) values (2,'TechNinja42','techninja42@example.com','$2y$10$h02PKRPjvB6jYU/IjUwyBewTZxVxce3X91sAyActNvf.327btGJde',0);
+Insert into FELHASZNALO (ID,NEV,EMAIL,JELSZO,ADMIN) values (3,'MusicLover87','musiclover87@example.com','$2y$10$h02PKRPjvB6jYU/IjUwyBewTZxVxce3X91sAyActNvf.327btGJde',0);
+Insert into FELHASZNALO (ID,NEV,EMAIL,JELSZO,ADMIN) values (4,'BookWorm24','bookworm24@example.com','$2y$10$h02PKRPjvB6jYU/IjUwyBewTZxVxce3X91sAyActNvf.327btGJde',0);
+Insert into FELHASZNALO (ID,NEV,EMAIL,JELSZO,ADMIN) values (5,'ScienceGeek99','sciencegeek99@example.com','$2y$10$h02PKRPjvB6jYU/IjUwyBewTZxVxce3X91sAyActNvf.327btGJde',0);
 Insert into FELHASZNALO (ID,NEV,EMAIL,JELSZO,ADMIN) values (6,'admin1','admin1@admin.com','$2y$10$h02PKRPjvB6jYU/IjUwyBewTZxVxce3X91sAyActNvf.327btGJde',1);
 
 REM INSERTING into FELTOLTO
