@@ -42,8 +42,8 @@ session_start();
     
     if (isset($_SESSION['user_id'])) {
         if ($_SESSION['user_isadmin'] == 0) {
-            // Kedvelt videók gomb
-            // Feltöltés gomb
+            echo "<a href=\"videos_by_current_user.php\">Feltöltött videóim</a><br />"; // TODO
+            echo "<a href=\"favorite_videos_page.php\">Kedvenc videók</a><br />"; // TODO
             echo "<a href=\"upload_page.php\">Videó feltöltés</a><br />";
         } else {
             echo "<a href=\"delete_page.php\">Videó törlése</a><br />";
@@ -70,11 +70,81 @@ session_start();
         unset($_POST['search_term_submit']);
     }
     ?>
-    <!-- Kategóriák felsorolva -->
 
-    <!-- Legnépszerűbb videók -->
+    <br>
 
-    <!-- Legújabb videók -->
+    <form method="post">
+        <input type="submit" value="Film és animáció" name="1">
+        <input type="submit" value="Autók és járművek" name="2">
+        <input type="submit" value="Zene" name="3">
+        <input type="submit" value="Művészet" name="4">
+        <input type="submit" value="Sport" name="5">
+        <input type="submit" value="Utazás" name="6">
+        <input type="submit" value="Kultúra" name="7">
+        <input type="submit" value="Videójáték" name="8">
+        <input type="submit" value="Személyes vagy vlog" name="9">
+        <input type="submit" value="Komédia" name="10">
+        <input type="submit" value="Szórakozás" name="11">
+        <input type="submit" value="Hírek és politika" name="12">
+        <input type="submit" value="Oktatás" name="13">
+        <input type="submit" value="Tudomány" name="14">
+        <br>
+        <input type="submit" value="Összes kategória" name="all">
+    </form>
+
+    <?php
+    // Legnézettebb videók
+        include_once "php/get_index_videos.php";
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {       
+            if (isset($_POST['all'])) {
+                echo "<p>Legnézettebb videók</p>";
+                getMostPopular(null);
+            } else {
+                foreach ($_POST as $name => $val)
+                {
+                    echo "<p>Legnézettebb '" . htmlspecialchars($val) . "' videók</p>";
+                }
+
+                for ($i = 0; $i < 14; $i++) { 
+                    if (isset($_POST[strval($i)])) {
+                        getMostPopular($i);
+                        break;
+                    }
+                }
+            }
+        } else {
+            echo "<p>Legnézettebb videók</p>";
+            getMostPopular(null);
+        }
+    ?>
+
+    <?php
+    // Legújabb videók
+        include_once "php/get_index_videos.php";
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {       
+            if (isset($_POST['all'])) {
+                echo "<p>Legújabb videók</p>";
+                getLatest(null);
+            } else {
+                foreach ($_POST as $name => $val)
+                {
+                    echo "<p>Legújabb '" . htmlspecialchars($val) . "' videók</p>";
+                }
+
+                for ($i = 0; $i < 14; $i++) { 
+                    if (isset($_POST[strval($i)])) {
+                        getLatest($i);
+                        break;
+                    }
+                }
+            }
+        } else {
+            echo "<p>Legújabb videók</p>";
+            getLatest(null);
+        }
+    ?>
 
 </body>
 
