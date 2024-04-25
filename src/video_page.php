@@ -8,9 +8,18 @@ $hibak = [];
 
 $video_id = $_GET["video_id"];
 
+// Nézettség frissítése
+$update_views = oci_parse($conn, 
+    "UPDATE VIDEO
+    SET VIEWS = VIEWS + 1
+    WHERE ID = :id"
+);
+oci_bind_by_name($update_views, ":id", $video_id);
+oci_execute($update_views);
+
 // Videó adatok lekérése
 $search = oci_parse($conn,
-    "SELECT VIDEO.ID, VIDEO.CIM, VIDEO.PATH, VIDEO.LEIRAS, FELHASZNALO.NEV, TO_CHAR(FELTOLTO.DATUM, 'YYYY. MM. DD.') AS DATUM
+    "SELECT VIDEO.ID, VIDEO.CIM, VIDEO.VIEWS, VIDEO.PATH, VIDEO.LEIRAS, FELHASZNALO.NEV, TO_CHAR(FELTOLTO.DATUM, 'YYYY. MM. DD.') AS DATUM
     FROM VIDEO
     INNER JOIN FELTOLTO
     ON VIDEO.ID = FELTOLTO.VIDEO_ID
@@ -22,7 +31,9 @@ oci_execute($search);
 if (!oci_fetch($search)) {
     echo "Videó nem található!";
 }
+
 $video_cim = oci_result($search, "CIM");
+$video_nezettseg = oci_result($search, "VIEWS");
 $video_path = oci_result($search, "PATH");
 $video_leiras = oci_result($search, "LEIRAS");
 $felhasznalo_nev = oci_result($search, "NEV");
@@ -111,6 +122,7 @@ oci_execute($comments);
     </video><br />
     " . $video_cim . "<br />
     " . $video_leiras . "<br />
+    Nézettség: " . $video_nezettseg . "<br />
     Feltöltötte: " . $felhasznalo_nev . "<br />
     Feltöltés dátuma: " . $feltolto_datum . "<br />
     Kategória: " . $kategoria . "<br />";
