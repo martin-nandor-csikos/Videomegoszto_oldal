@@ -201,7 +201,8 @@ DROP TABLE VIDEO_KATEGORIA;
 	"CIM" VARCHAR2(255 CHAR), 
 	"LEIRAS" VARCHAR2(1000 CHAR), 
 	"PATH" VARCHAR2(255 CHAR), 
-	"THUMBNAIL" VARCHAR2(255 BYTE)
+	"THUMBNAIL" VARCHAR2(255 BYTE),
+  "VIEWS" NUMBER(10,0) DEFAULT 0
    ) SEGMENT CREATION IMMEDIATE 
   PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 
  NOCOMPRESS LOGGING
@@ -215,6 +216,7 @@ DROP TABLE VIDEO_KATEGORIA;
    COMMENT ON COLUMN "VIDEO"."LEIRAS" IS 'A videó leírása';
    COMMENT ON COLUMN "VIDEO"."PATH" IS 'A videó elérési útvonala (egyedi)';
    COMMENT ON COLUMN "VIDEO"."THUMBNAIL" IS 'A videó képének elérési útvonala (egyedi)';
+   COMMENT ON COLUMN "VIDEO"."VIEWS" IS 'A videón található megtekintések száma';
    COMMENT ON TABLE "VIDEO"  IS 'A videók adatait tartalmazó tábla.';
 --------------------------------------------------------
 --  DDL for Table VIDEO_CIMKE
