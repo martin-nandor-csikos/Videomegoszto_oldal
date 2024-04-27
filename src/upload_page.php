@@ -25,6 +25,9 @@ while (oci_fetch($get_categories)) {
     <title>Videó feltöltés - Videómegosztó</title>
 </head>
 <body>
+
+<?php require_once "menu.php"; ?>
+
 <?php
     if (isset($_SESSION['hibak'])) {
         foreach ($_SESSION['hibak'] as $hiba) {

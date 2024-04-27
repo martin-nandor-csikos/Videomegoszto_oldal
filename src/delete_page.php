@@ -19,6 +19,8 @@ if (!isset($_SESSION['user_isadmin']) || $_SESSION['user_isadmin'] == 0) {
 
 <body>
   <?php
+    require_once "menu.php";
+
     if (isset($_SESSION['delete_success'])) {
       echo $_SESSION['delete_success'];
       unset($_SESSION['delete_success']);
