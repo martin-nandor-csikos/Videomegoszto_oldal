@@ -106,6 +106,9 @@ oci_execute($comments);
     ?>
 </head>
 <body>
+
+<?php require_once "menu.php"; ?>
+
 <?php
     if (isset($_SESSION['hibak'])) {
         foreach ($_SESSION['hibak'] as $hiba) {
@@ -133,13 +136,13 @@ oci_execute($comments);
     if (isset($_SESSION['user_id'])) {
         if ($kedvenc){
             echo "
-            <form action='PHP/like.php' method='post'>
+            <form action='php/like.php' method='post'>
                 <input type='submit' name='unlike_video' value='Törlés kedvencekből'/><br />
                 <input type='hidden' id='video_id' name='video_id' value='" . $video_id . "' />
             </form>";
         } else {
             echo "
-            <form action='PHP/like.php' method='post'>
+            <form action='php/like.php' method='post'>
                 <input type='submit' name='like_video' value='Kedvenc'/><br />
                 <input type='hidden' id='video_id' name='video_id' value='" . $video_id . "' />
             </form>";
