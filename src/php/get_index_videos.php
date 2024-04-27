@@ -48,7 +48,7 @@ function getMostPopular($category) {
     </div>
     ";
 
-
+    /*
     echo "
     <script>
     let results = document.getElementsByClassName('search_result');
@@ -60,6 +60,7 @@ function getMostPopular($category) {
     });
     </script>
     ";
+    */
 }
 
 function getLatest($category) {
@@ -111,7 +112,7 @@ function getLatest($category) {
     </div>
     ";
 
-
+    /*
     echo "
     <script>
     let results = document.getElementsByClassName('search_result');
@@ -123,4 +124,5 @@ function getLatest($category) {
     });
     </script>
     ";
+    */
 }
