@@ -22,9 +22,7 @@ session_start();
 <body>
 
     <?php
-    if (isset($_SESSION['user_name'])) {
-        echo "<p>Üdvözöljük, " . $_SESSION['user_name'] . "!</p>";
-    }
+    require_once "menu.php";
 
     // Database connection popup alert. Csak akkor jön elő, ha legelső alkalommal nyílik meg az oldal
     if (!isset($_SESSION['database_connection_success'])) {
@@ -38,19 +36,6 @@ session_start();
 
             $_SESSION['database_connection_success'] = true;
         }
-    }
-    
-    if (isset($_SESSION['user_id'])) {
-        if ($_SESSION['user_isadmin'] == 0) {
-            echo "<a href=\"videos_by_current_user.php\">Feltöltött videóim</a><br />"; // TODO
-            echo "<a href=\"favorite_videos_page.php\">Kedvenc videók</a><br />"; // TODO
-            echo "<a href=\"upload_page.php\">Videó feltöltés</a><br />";
-        } else {
-            echo "<a href=\"delete_page.php\">Videó törlése</a><br />";
-        }
-        echo "<a href=\"php/logout.php\">Kijelentkezés</a>";
-    } else {
-        echo "<a href=\"login_page.php\">Bejelentkezés</a>";
     }
     ?>
     
@@ -93,57 +78,54 @@ session_start();
     </form>
 
     <?php
-    // Legnézettebb videók
-        include_once "php/get_index_videos.php";
+    // Legnézettebb + legújabb videók
+    include_once "php/get_index_videos.php";
 
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {       
-            if (isset($_POST['all'])) {
-                echo "<p>Legnézettebb videók</p>";
-                getMostPopular(null);
-            } else {
-                foreach ($_POST as $name => $val)
-                {
-                    echo "<p>Legnézettebb '" . htmlspecialchars($val) . "' videók</p>";
-                }
+    if ($_SERVER['REQUEST_METHOD'] === 'POST' && !isset($_POST['all'])) {
 
-                for ($i = 0; $i < 14; $i++) { 
-                    if (isset($_POST[strval($i)])) {
-                        getMostPopular($i);
-                        break;
-                    }
-                }
-            }
-        } else {
-            echo "<p>Legnézettebb videók</p>";
-            getMostPopular(null);
+        // Mivel nem tudjuk melyik lett kiválasztva, ezért így oldjuk meg gyorsan, hogy kiirassuk az értékét
+        foreach ($_POST as $name => $val)
+        {
+            echo "<p>Legnézettebb '" . htmlspecialchars($val) . "' videók</p>";
         }
-    ?>
 
-    <?php
-    // Legújabb videók
-        include_once "php/get_index_videos.php";
-
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {       
-            if (isset($_POST['all'])) {
-                echo "<p>Legújabb videók</p>";
-                getLatest(null);
-            } else {
-                foreach ($_POST as $name => $val)
-                {
-                    echo "<p>Legújabb '" . htmlspecialchars($val) . "' videók</p>";
-                }
-
-                for ($i = 0; $i < 14; $i++) { 
-                    if (isset($_POST[strval($i)])) {
-                        getLatest($i);
-                        break;
-                    }
-                }
+        for ($i = 0; $i < 14; $i++) { 
+            if (isset($_POST[strval($i)])) {
+                getMostPopular($i);
+                break;
             }
-        } else {
-            echo "<p>Legújabb videók</p>";
-            getLatest(null);
         }
+
+        foreach ($_POST as $name => $val)
+        {
+            echo "<p>Legújabb '" . htmlspecialchars($val) . "' videók</p>";
+        }
+
+        for ($i = 0; $i < 14; $i++) { 
+            if (isset($_POST[strval($i)])) {
+                getLatest($i);
+                break;
+            }
+        }
+    } else {
+        echo "<p>Legnézettebb videók</p>";
+        getMostPopular(null);
+        echo "<p>Legújabb videók</p>";
+        getLatest(null);
+    }
+
+    // Itt kívül echozzuk, mert csak így működik az eventlistener a legnézettebb, és a legújabb videókra egyszerre
+    echo "
+    <script>
+    let results = document.getElementsByClassName('search_result');
+    Array.from(results).forEach((res) => {
+        let video_id = res.id.split('_')[0];
+        res.addEventListener('click', function() {
+            window.location.href = '/video_page.php?video_id=' + video_id;
+        });
+    });
+    </script>
+    ";
     ?>
 
 </body>
