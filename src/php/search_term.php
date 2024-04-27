@@ -22,6 +22,7 @@ function search_term($conn, $count) {
     oci_bind_by_name($search, ":count", $count);
     oci_execute($search);
 
+    $isFound = FALSE;
     while (oci_fetch($search)) {
         echo "
         <div class='search_result' id='" . oci_result($search, "ID") . "_vid'>
@@ -30,6 +31,14 @@ function search_term($conn, $count) {
             Feltöltötte: " . oci_result($search, "NEV") . "<br />
             Ekkor: " . oci_result($search, "DATUM") . "<br />
         </div>
+        ";
+
+        $isFound = TRUE;
+    }
+
+    if (!$isFound) {
+        echo "
+        <p>Nincs találat.</p>
         ";
     }
     
