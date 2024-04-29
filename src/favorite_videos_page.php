@@ -24,18 +24,8 @@ if (!isset($_SESSION['user_id'])) {
 
 <body>
 
-    <?php require_once "menu.php"; ?>
-    
-    <form action="index.php" method="get" enctype="multipart/form-data">
-    <input type="text" name="term" id="term" required />
-    <input type="submit" name="search_term_submit" value="Keresés" />
-    </form>
-
     <?php
-    if (isset($_GET["search_term_submit"])) {
-        header("Location: index.php");
-    }
-
+    require_once "menu.php";
     require "php/get_favorite_videos.php";
     ?>
 

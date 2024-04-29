@@ -126,7 +126,7 @@ oci_execute($comments);
     " . $video_cim . "<br />
     " . $video_leiras . "<br />
     Nézettség: " . $video_nezettseg . "<br />
-    Feltöltötte: " . $felhasznalo_nev . "<br />
+    Feltöltötte: <a href='channel_page.php?user=" . $felhasznalo_nev . "'>" . $felhasznalo_nev . "</a><br />
     Feltöltés dátuma: " . $feltolto_datum . "<br />
     Kategória: " . $kategoria . "<br />";
 
