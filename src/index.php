@@ -126,6 +126,12 @@ session_start();
     });
     </script>
     ";
+    
+    echo "<p>Legtöbb videót feltöltő felhasználók</p>";
+    getMostUploaded();
+
+    echo "<p>Legtöbb kommentet író felhasználók</p>";
+    getMostCommented();
     ?>
 
 </body>
