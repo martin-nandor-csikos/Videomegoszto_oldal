@@ -26,14 +26,19 @@ if (!isset($_SESSION['user_id'])) {
 
     <?php require_once "menu.php"; ?>
     
-    <form action="index.php" method="get" enctype="multipart/form-data">
-    <input type="text" name="term" id="term" required />
-    <input type="submit" name="search_term_submit" value="Keresés" />
+    <form action="videos_by_current_user.php" method="get" enctype="multipart/form-data">
+        <input type="text" name="term" id="term" required placeholder="Videók keresése a csatornán" style="width: 200px;"/>
+        <input type="submit" name="search_term_submit" value="Keresés" />
+        <input type="hidden" name="user" value=<?php echo $_SESSION['user_name']; ?>>
     </form>
 
     <?php
     if (isset($_GET["search_term_submit"])) {
-        header("Location: index.php");
+        require "php/oracle_conn.php";
+        require("php/search_term.php");
+
+        search_term_by_user($conn, $_SESSION['user_name']);
+        unset($_POST['search_term_submit']);
     }
 
     require "php/get_user_uploaded_videos.php";

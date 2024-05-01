@@ -11,7 +11,7 @@ if (!isset($_SESSION['user_id'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kedvenc videók - Videómegosztó</title>
+    <title>Fiókom adatai - Videómegosztó</title>
 
     <style>
         .search_result {
@@ -26,7 +26,18 @@ if (!isset($_SESSION['user_id'])) {
 
     <?php
     require_once "menu.php";
-    require "php/get_favorite_videos.php";
+    require "php/oracle_conn.php";
+
+    $search = oci_parse($conn, "SELECT NEV, EMAIL FROM FELHASZNALO WHERE ID = :userid");
+    oci_bind_by_name($search, ":userid", $_SESSION['user_id']);
+    oci_execute($search);
+
+    while (oci_fetch($search)) {
+        echo "
+        <p>Név: " . oci_result($search, "NEV") . "</p>
+        <p>E-mail cím: " . oci_result($search, "EMAIL") . "</p>
+        ";
+    }
     ?>
 
     <br>
