@@ -94,6 +94,33 @@ $comments = oci_parse($conn,
     ORDER BY IRO.IDO DESC");
 oci_bind_by_name($comments, ":video_id", $video_id);
 oci_execute($comments);
+
+// Count comments
+$count_comments = oci_parse($conn,
+    "SELECT COUNT(*) AS COMMENT_COUNT
+    FROM KOMMENT
+    INNER JOIN EREDET
+    ON KOMMENT.ID = EREDET.KOMMENT_ID
+    WHERE EREDET.VIDEO_ID = :video_id"
+);
+oci_bind_by_name($count_comments, ":video_id", $video_id);
+oci_execute($count_comments);
+oci_fetch($count_comments);
+$comment_count = oci_result($count_comments, "COMMENT_COUNT");
+
+// Count likes
+$count_likes = oci_parse($conn,
+    "SELECT COUNT(*) AS LIKE_COUNT
+    FROM KEDVENC
+    WHERE VIDEO_ID = :video_id"
+);
+oci_bind_by_name($count_likes, ":video_id", $video_id);
+oci_execute($count_likes);
+oci_fetch($count_likes);
+$like_count = oci_result($count_likes, "LIKE_COUNT");
+
+echo "Kedvelések: " . $like_count . "<br />";
+
 ?>
 
 <!DOCTYPE html>
@@ -132,6 +159,9 @@ oci_execute($comments);
 
     if ($cimkek) echo "Címkék: " . implode(", ", $cimkek) . "<br />";
     else echo "A videónak nincs címkéje.";
+
+    echo "Kommentek: " . $comment_count . "<br />";
+    echo "Like-ok: " . $like_count . "<br />";
     
     if (isset($_SESSION['user_id'])) {
         if ($kedvenc){
