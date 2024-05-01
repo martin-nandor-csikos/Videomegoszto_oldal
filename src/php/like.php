@@ -36,3 +36,4 @@ if (isset($_POST['like_video'])) {
 }
 
 header('Location: ' . $_SERVER['HTTP_REFERER']);
+oci_close($conn);

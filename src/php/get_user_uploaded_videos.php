@@ -43,3 +43,4 @@ Array.from(results).forEach((res) => {
 });
 </script>
 ";
+oci_close($conn);

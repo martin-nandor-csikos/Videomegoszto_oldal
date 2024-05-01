@@ -44,3 +44,4 @@ oci_bind_by_name($link_video, ':video_id', $video_id);
 oci_execute($link_video);
 
 header('Location: ' . $_SERVER['HTTP_REFERER']);
+oci_close($conn);

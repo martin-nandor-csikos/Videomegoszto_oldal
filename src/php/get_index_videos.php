@@ -61,6 +61,7 @@ function getMostPopular($category) {
     </script>
     ";
     */
+    oci_close($conn);
 }
 
 function getLatest($category) {
@@ -125,6 +126,7 @@ function getLatest($category) {
     </script>
     ";
     */
+    oci_close($conn);
 }
 
 function getVideosByUser($user) {
@@ -161,6 +163,7 @@ function getVideosByUser($user) {
     echo "
     </div>
     ";
+    oci_close($conn);
 }
 
 function getMostUploaded() {
@@ -189,6 +192,7 @@ function getMostUploaded() {
     echo "
     </div>
     ";
+    oci_close($conn);
 }
 
 function getMostCommented() {
@@ -217,4 +221,5 @@ function getMostCommented() {
     echo "
     </div>
     ";
+    oci_close($conn);
 }

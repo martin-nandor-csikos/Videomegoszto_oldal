@@ -100,3 +100,4 @@ else if (($_FILES["file"]["size"] > 104857600) || !in_array($extension, $allowed
 $_SESSION['hibak'] = $hibak;
 
 header("Location: ../upload_page.php");
+oci_close($conn);

@@ -38,6 +38,7 @@ if (!isset($_SESSION['user_id'])) {
         <p>E-mail cím: " . oci_result($search, "EMAIL") . "</p>
         ";
     }
+    oci_close($conn);
     ?>
 
     <br>

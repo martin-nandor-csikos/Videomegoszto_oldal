@@ -11,7 +11,7 @@ if (isset($_SESSION['user_id'])) {
         echo "<a href=\"upload_page.php\">Videó feltöltés</a><br />";
         echo "<a href=\"favorite_videos_page.php\">Kedvenc videók</a><br />";
     } else {
-        echo "<a href=\"delete_page.php\">Videó törlése</a><br />";
+        echo "<a href=\"delete_page.php\">Adatok törlése</a><br />";
     }
     echo "<a href=\"php/logout.php\">Kijelentkezés</a>";
 } else {

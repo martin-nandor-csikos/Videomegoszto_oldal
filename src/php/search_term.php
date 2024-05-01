@@ -55,6 +55,7 @@ function search_term($conn, $count) {
     });
     </script>
     ";
+    oci_close($conn);
 }
 
 function search_term_by_user($conn, $user) {
@@ -101,4 +102,5 @@ function search_term_by_user($conn, $user) {
         <p>Nincs találat.</p>
         ";
     }
+    oci_close($conn);
 }
