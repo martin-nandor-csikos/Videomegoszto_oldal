@@ -69,6 +69,10 @@ if (!isset($_SESSION['user_id'])) {
         <input type="submit" value="Mentés">
         <br />
     </form>
+    <form action="php/delete_self.php" method="post" onsubmit="return confirm('Biztosan törölni szeretnéd a fiókodat?');">
+        <input type="submit" value="Fiók törlése" name="self_torles" id="self_torles">
+        <br />
+    </form>
 
     <br>
 
