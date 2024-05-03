@@ -52,30 +52,10 @@ else if (($_FILES["file"]["size"] > 104857600) || !in_array($extension, $allowed
     oci_execute($link_user);
 
     foreach ($tags as $tag) {
-        $check_tag = oci_parse($conn, "SELECT ID FROM CIMKE WHERE CIM LIKE :cim");
-        oci_bind_by_name($check_tag, ':cim', $tag);
-        oci_execute($check_tag);
-
-        if (oci_fetch($check_tag)) {
-            // Ha létező tag, felhasználjuk az ID-jét
-            $tag_id = oci_result($check_tag, "ID");
-        } else {
-            // Ha nem létező tag, létrehozunk egyet, és annak használjuk az ID-jét
-            $get_next_tag_id = oci_parse($conn, "SELECT CIMKE_SEQ.NEXTVAL FROM DUAL");
-            oci_execute($get_next_tag_id);
-            oci_fetch($get_next_tag_id);
-            $tag_id = oci_result($get_next_tag_id, "NEXTVAL");
-
-            $insert_new_tag = oci_parse($conn, "INSERT INTO CIMKE (ID, CIM) VALUES (:id, :cim)");
-            oci_bind_by_name($insert_new_tag, ':id', $tag_id);
-            oci_bind_by_name($insert_new_tag, ':cim', $tag);
-            oci_execute($insert_new_tag);
-        }
-
-        $link_tag = oci_parse($conn, "INSERT INTO VIDEO_CIMKE (VIDEO_ID, CIMKE_ID) VALUES (:video_id, :cimke_id)");
-        oci_bind_by_name($link_tag, ':video_id', $id);
-        oci_bind_by_name($link_tag, ':cimke_id', $tag_id);
-        oci_execute($link_tag);
+        $add_tag = oci_parse($conn, "BEGIN ADDTAG(:video_id, :tag); END;");
+        oci_bind_by_name($add_tag, ':video_id', $id);
+        oci_bind_by_name($add_tag, ':tag', $tag);
+        oci_execute($add_tag);
     }
 
     move_uploaded_file($_FILES["file"]["tmp_name"],

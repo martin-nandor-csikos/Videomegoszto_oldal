@@ -861,3 +861,29 @@ ALTER TRIGGER "VIDEO_SEQ_TR" ENABLE;
 	  REFERENCES "KATEGORIA" ("ID") ON DELETE CASCADE ENABLE;
   ALTER TABLE "VIDEO_KATEGORIA" ADD CONSTRAINT "VIDEO_KATEGORIA_IBFK_2" FOREIGN KEY ("VIDEO_ID")
 	  REFERENCES "VIDEO" ("ID") ON DELETE CASCADE ENABLE;
+
+--------------------------------------------------------
+--  Procedures
+--------------------------------------------------------
+
+CREATE OR REPLACE PROCEDURE AddTag (
+    video_id IN VIDEO_CIMKE.VIDEO_ID%TYPE,
+    tag_name IN CIMKE.CIM%TYPE)
+AS
+    video_sid VIDEO_CIMKE.VIDEO_ID%TYPE;
+    tag_id CIMKE.ID%TYPE;
+    res_count NUMBER;
+    BEGIN
+        SELECT COUNT(*) INTO res_count FROM CIMKE WHERE CIM LIKE tag_name;
+        IF res_count = 0 THEN
+            SELECT CIMKE_SEQ.NEXTVAL INTO tag_id FROM DUAL;
+            INSERT INTO CIMKE (ID, CIM) VALUES (tag_id, tag_name);
+        ELSE
+            SELECT ID INTO tag_id FROM CIMKE WHERE CIM LIKE tag_name;
+        END IF;
+        video_sid := video_id;
+        SELECT COUNT(*) INTO res_count FROM VIDEO_CIMKE WHERE VIDEO_ID = video_sid AND CIMKE_ID = tag_id;
+        IF res_count = 0 THEN
+            INSERT INTO VIDEO_CIMKE (VIDEO_ID, CIMKE_ID) VALUES (video_sid, tag_id);
+        END IF;
+    END;

@@ -19,7 +19,7 @@ oci_execute($update_views);
 
 // Videó adatok lekérése
 $search = oci_parse($conn,
-    "SELECT VIDEO.ID, VIDEO.CIM, VIDEO.VIEWS, VIDEO.PATH, VIDEO.LEIRAS, FELHASZNALO.NEV, TO_CHAR(FELTOLTO.DATUM, 'YYYY. MM. DD.') AS DATUM
+    "SELECT VIDEO.CIM, VIDEO.VIEWS, VIDEO.PATH, VIDEO.LEIRAS, FELHASZNALO.NEV, FELHASZNALO.ID, TO_CHAR(FELTOLTO.DATUM, 'YYYY. MM. DD.') AS DATUM
     FROM VIDEO
     INNER JOIN FELTOLTO
     ON VIDEO.ID = FELTOLTO.VIDEO_ID
@@ -38,6 +38,7 @@ $video_path = oci_result($search, "PATH");
 $video_leiras = oci_result($search, "LEIRAS");
 $felhasznalo_nev = oci_result($search, "NEV");
 $feltolto_datum = oci_result($search, "DATUM");
+$feltolto_id = oci_result($search, "ID");
 
 // Kategória lekérése
 $search_category = oci_parse($conn, "
@@ -118,9 +119,6 @@ oci_bind_by_name($count_likes, ":video_id", $video_id);
 oci_execute($count_likes);
 oci_fetch($count_likes);
 $like_count = oci_result($count_likes, "LIKE_COUNT");
-
-echo "Kedvelések: " . $like_count . "<br />";
-
 ?>
 
 <!DOCTYPE html>
@@ -151,8 +149,16 @@ echo "Kedvelések: " . $like_count . "<br />";
         <source src='media/videos/" . $video_path . "' type='video/mp4'>
     </video><br />
     " . $video_cim . "<br />
-    " . $video_leiras . "<br />
-    Nézettség: " . $video_nezettseg . "<br />
+    " . $video_leiras . "<br />";
+
+    if ($feltolto_id === $_SESSION['user_id']) echo "
+    <form action='video_modify_page.php' method='post'>
+        <input type='submit' name='video_modify' value='Videó adatok módosítása'/><br />
+        <input type='hidden' id='video_id' name='video_id' value='" . $video_id . "' />
+    </form>
+    ";
+
+    echo "Nézettség: " . $video_nezettseg . "<br />
     Feltöltötte: <a href='channel_page.php?user=" . $felhasznalo_nev . "'>" . $felhasznalo_nev . "</a><br />
     Feltöltés dátuma: " . $feltolto_datum . "<br />
     Kategória: " . $kategoria . "<br />";
