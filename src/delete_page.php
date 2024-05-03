@@ -101,6 +101,8 @@ if (!isset($_SESSION['user_isadmin']) || $_SESSION['user_isadmin'] == 0) {
     <th>ID</th>
     <th>Név</th>
     <th>E-mail</th>
+    <th>Törlés</th>
+    <th>Admin rang adás</th>
     <?php
     // User keres-e cím alapján
     // Ezeket a sorokat fel lehet használni a videók kereséséhez is indexen
@@ -135,7 +137,13 @@ if (!isset($_SESSION['user_isadmin']) || $_SESSION['user_isadmin'] == 0) {
           <input type="hidden" id="user_id" name="user_id" value="' . $row['ID'] . '">
           <input type="submit" value="Törlés" name="user_torles" id="user_torles">
         </form>
-      </td></tr>';
+        </td>';
+        echo '<td>
+          <form action="./php/make_admin.php" method="POST">
+            <input type="hidden" id="user_id" name="user_id" value="' . $row['ID'] . '">
+            <input type="submit" value="Küldés" name="make_admin" id="make_admin">
+          </form>
+        </td></tr>';
       }
     }
     ?>
