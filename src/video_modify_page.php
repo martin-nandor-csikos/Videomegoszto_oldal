@@ -131,6 +131,12 @@ while (oci_fetch($search_tags)) {
     ?>
     <input type="submit" name="submit" value="Módosítás" />
 </form>
+<form action="php/delete_video.php" method="post" onsubmit="return confirm('Biztosan törölni szeretnéd a videót?');">
+    <?php
+    echo "<input type='hidden' id='video_id' name='video_id' value='" . $video_id . "' />";
+    ?>
+    <input type="submit" name="video_torles" value="Videó törlése" />
+</form>
 
 <a href="$_SERVER['HTTP_REFERER']">Vissza</a><br />
 
