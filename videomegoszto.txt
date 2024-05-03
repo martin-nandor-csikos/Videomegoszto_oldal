@@ -863,7 +863,7 @@ ALTER TRIGGER "VIDEO_SEQ_TR" ENABLE;
 	  REFERENCES "VIDEO" ("ID") ON DELETE CASCADE ENABLE;
 
 --------------------------------------------------------
---  Procedures
+--  Create AddTag Procedure
 --------------------------------------------------------
 
 CREATE OR REPLACE PROCEDURE AddTag (
@@ -885,5 +885,26 @@ AS
         SELECT COUNT(*) INTO res_count FROM VIDEO_CIMKE WHERE VIDEO_ID = video_sid AND CIMKE_ID = tag_id;
         IF res_count = 0 THEN
             INSERT INTO VIDEO_CIMKE (VIDEO_ID, CIMKE_ID) VALUES (video_sid, tag_id);
+        END IF;
+    END;
+
+--------------------------------------------------------
+--  Create RemoveTag Procedure
+--------------------------------------------------------
+
+CREATE OR REPLACE PROCEDURE RemoveTag (
+    video_id IN VIDEO_CIMKE.VIDEO_ID%TYPE,
+    tag_name IN CIMKE.CIM%TYPE)
+AS
+    video_sid VIDEO_CIMKE.VIDEO_ID%TYPE;
+    tag_id CIMKE.ID%TYPE;
+    res_count NUMBER;
+    BEGIN
+        video_sid := video_id;
+        SELECT ID INTO tag_id FROM CIMKE WHERE CIM LIKE tag_name;
+        DELETE FROM VIDEO_CIMKE WHERE VIDEO_ID = video_sid AND CIMKE_ID = tag_id;
+        SELECT COUNT(*) INTO res_count FROM VIDEO_CIMKE WHERE CIMKE_ID = tag_id;
+        IF res_count = 0 THEN
+            DELETE FROM CIMKE WHERE ID = tag_id;
         END IF;
     END;

@@ -46,6 +46,13 @@ foreach ($tags as $tag) {
     oci_execute($add_tag);
 }
 
+foreach ($rtags as $rtag) {
+    $remove_tag = oci_parse($conn, "BEGIN REMOVETAG(:video_id, :tag); END;");
+    oci_bind_by_name($remove_tag, ':video_id', $id);
+    oci_bind_by_name($remove_tag, ':tag', $rtag);
+    oci_execute($remove_tag);
+}
+
 $_SESSION['hibak'] = $hibak;
 
 header("Location: /video_page.php?video_id=" . $id);

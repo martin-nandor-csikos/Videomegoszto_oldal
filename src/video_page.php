@@ -164,7 +164,7 @@ $like_count = oci_result($count_likes, "LIKE_COUNT");
     Kategória: " . $kategoria . "<br />";
 
     if ($cimkek) echo "Címkék: " . implode(", ", $cimkek) . "<br />";
-    else echo "A videónak nincs címkéje.";
+    else echo "A videónak nincs címkéje.<br />";
 
     echo "Kommentek: " . $comment_count . "<br />";
     echo "Like-ok: " . $like_count . "<br />";
