@@ -83,7 +83,7 @@ if (isset($_SESSION['user_id'])){
 
 // Komment adatok lekérése
 $comments = oci_parse($conn,
-    "SELECT FELHASZNALO.NEV, TO_CHAR(IRO.IDO, 'YYYY. MM. DD. HH24:MI:SS') AS IDO, KOMMENT.SZOVEG
+    "SELECT FELHASZNALO.NEV, FELHASZNALO.ID AS FID, TO_CHAR(IRO.IDO, 'YYYY. MM. DD. HH24:MI:SS') AS IDO, KOMMENT.SZOVEG, KOMMENT.ID
     FROM KOMMENT
     INNER JOIN EREDET
     ON KOMMENT.ID = EREDET.KOMMENT_ID
@@ -129,6 +129,22 @@ $like_count = oci_result($count_likes, "LIKE_COUNT");
     <?php
         echo "<title>" . $video_cim . " - Videómegosztó</title>"
     ?>
+    <script>
+        function editComment(video_id, comment_id) {
+            console.log(video_id);
+            console.log(comment_id);
+            let original = document.getElementById(comment_id).innerHTML;
+            document.getElementById(comment_id).innerHTML = "" +
+            "<form action='php/comment_modify.php' method='post'>" +
+            "<label for='comment_text'>Új szöveg:</label>" +
+            "<input type='text' name='comment_text' id='comment_text' required />" +
+            "<input type='hidden' id='comment_id' name='comment_id' value='" + comment_id + "' />" +
+            "<input type='submit' name='comment_submit' value='Küldés' />" +
+            "</form>" +
+            "<button onclick='location.reload()'>Mégse</button>" +
+            "";
+        }
+    </script>
 </head>
 <body>
 
@@ -199,8 +215,14 @@ $like_count = oci_result($count_likes, "LIKE_COUNT");
 
     echo "Kommentek:<br />";
     while (oci_fetch($comments)) {
-        echo "<div class='comment'>" . oci_result($comments, "NEV") . ": " . oci_result($comments, "SZOVEG") . "<br />
-        ". oci_result($comments, "IDO") . "</div><br />";
+        echo "<div class='comment' id='" . oci_result($comments, "ID") . "'>" . oci_result($comments, "NEV") . ": " . oci_result($comments, "SZOVEG") . "<br />
+        ". oci_result($comments, "IDO") . "<br />";
+        if (oci_result($comments, "FID") === $_SESSION['user_id']) {
+            echo "
+            <button onclick='editComment(" . $video_id . ", " . oci_result($comments, "ID") . ")'>Módosítás</button>
+            <br />";
+        }
+        echo "</div>";
     }
 ?>
 
