@@ -151,6 +151,13 @@ if (!isset($_SESSION['user_isadmin']) || $_SESSION['user_isadmin'] == 0) {
 
   <br>
 
+  <?php
+    if (isset($_SESSION['remove_category_fail'])) {
+      echo "Sikertelen kategória törlés! (Használatban van?)";
+      unset($_SESSION['remove_category_fail']);
+    }
+  ?>
+
   <form action="php/add_category.php" method="post">
     <label for="category_name">Új kategória:</label>
     <input type="text" name="category_name" id="category_name">
