@@ -149,6 +149,40 @@ if (!isset($_SESSION['user_isadmin']) || $_SESSION['user_isadmin'] == 0) {
     ?>
   </table>
 
+  <br>
+
+  <table border="1">
+    <th>ID</th>
+    <th>Kategória</th>
+    <th>Törlés</th>
+    <?php
+    $list_categories = oci_parse($conn, "SELECT * FROM KATEGORIA");
+    oci_execute($list_categories);
+
+    // Belenyomjuk az eredményeket ebbe az arraybe, mert így az 1. sort nem skipeli
+    $rows = array();
+    while ($row = oci_fetch_array($list_categories, OCI_ASSOC + OCI_RETURN_NULLS)) {
+      $rows[] = $row;
+    }
+
+    // Undorító HTML kiiratás
+    if (count($rows) == 0) {
+      echo "<p>Nincs találat.</p>";
+    } else {
+      foreach ($rows as $row) {
+        echo "<tr><td>" . $row['ID'] . "</td>";
+        echo "<td>" . $row['CIM'] . "</td>";
+        echo '<td>
+        <form action="./php/delete_category.php" method="POST">
+          <input type="hidden" id="category_id" name="category_id" value="' . $row['ID'] . '">
+          <input type="submit" value="Törlés" name="delete_category" id="delete_category">
+        </form>
+        </td></tr>';
+      }
+    }
+    ?>
+  </table>
+
   <?php echo '<a href="index.php">Vissza</a>'; ?>
 
 </body>
