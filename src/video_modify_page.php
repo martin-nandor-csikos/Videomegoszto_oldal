@@ -138,7 +138,9 @@ while (oci_fetch($search_tags)) {
     <input type="submit" name="video_torles" value="Videó törlése" />
 </form>
 
-<a href="$_SERVER['HTTP_REFERER']">Vissza</a><br />
+<?php
+echo "<a href=" . $_SERVER['HTTP_REFERER'] . ">Vissza</a><br />"
+?>
 
 </body>
 </html>
