@@ -220,8 +220,10 @@ $like_count = oci_result($count_likes, "LIKE_COUNT");
         if (oci_result($comments, "FID") === $_SESSION['user_id']) {
             echo "
             <button onclick='editComment(" . $video_id . ", " . oci_result($comments, "ID") . ")'>Módosítás</button>
-            <br />
-            <form action='php/delete_comment.php' method='post' onsubmit=\"return confirm('Biztosan törölni szeretnéd a kommentet?');\">
+            <br />";
+        }
+        if (oci_result($comments, "FID") === $_SESSION['user_id'] || $_SESSION['user_isadmin'] == 1) {
+            echo "<form action='php/delete_comment.php' method='post' onsubmit=\"return confirm('Biztosan törölni szeretnéd a kommentet?');\">
             <input type='hidden' id='comment_id' name='comment_id' value='" . oci_result($comments, "ID") . "' />
             <input type='submit' name='comment_delete' value='Törlés' />
             <br /></form>";
