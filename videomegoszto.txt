@@ -902,3 +902,15 @@ AS
             DELETE FROM CIMKE WHERE ID = tag_id;
         END IF;
     END;
+
+--------------------------------------------------------
+--  Create CapitalizeTag Trigger
+--------------------------------------------------------
+
+CREATE OR REPLACE TRIGGER CapitalizeTag
+BEFORE INSERT OR UPDATE OF CIM
+ON CIMKE
+FOR EACH ROW
+BEGIN
+    :NEW.CIM := INITCAP(:NEW.CIM);
+END;
