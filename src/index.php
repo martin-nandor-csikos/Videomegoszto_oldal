@@ -59,20 +59,14 @@ session_start();
     <br>
 
     <form method="post">
-        <input type="submit" value="Film és animáció" name="1">
-        <input type="submit" value="Autók és járművek" name="2">
-        <input type="submit" value="Zene" name="3">
-        <input type="submit" value="Művészet" name="4">
-        <input type="submit" value="Sport" name="5">
-        <input type="submit" value="Utazás" name="6">
-        <input type="submit" value="Kultúra" name="7">
-        <input type="submit" value="Videójáték" name="8">
-        <input type="submit" value="Személyes vagy vlog" name="9">
-        <input type="submit" value="Komédia" name="10">
-        <input type="submit" value="Szórakozás" name="11">
-        <input type="submit" value="Hírek és politika" name="12">
-        <input type="submit" value="Oktatás" name="13">
-        <input type="submit" value="Tudomány" name="14">
+        <?php
+            require "php/oracle_conn.php";
+            $list_categories = oci_parse($conn, "SELECT * FROM KATEGORIA");
+            oci_execute($list_categories);
+            while (oci_fetch($list_categories)) {
+                echo "<input type='submit' value='" . oci_result($list_categories, "CIM") . "' name='" . oci_result($list_categories, "ID") . "'>";
+            }
+        ?>
         <br>
         <input type="submit" value="Összes kategória" name="all">
     </form>
@@ -89,11 +83,8 @@ session_start();
             echo "<p>Legnézettebb '" . htmlspecialchars($val) . "' videók</p>";
         }
 
-        for ($i = 0; $i < 14; $i++) { 
-            if (isset($_POST[strval($i)])) {
-                getMostPopular($i);
-                break;
-            }
+        foreach ($_POST as $name => $val) {
+            getMostPopular($name);
         }
 
         foreach ($_POST as $name => $val)
@@ -101,11 +92,8 @@ session_start();
             echo "<p>Legújabb '" . htmlspecialchars($val) . "' videók</p>";
         }
 
-        for ($i = 0; $i < 14; $i++) { 
-            if (isset($_POST[strval($i)])) {
-                getLatest($i);
-                break;
-            }
+        foreach ($_POST as $name => $val) {
+            getLatest($name);
         }
     } else {
         echo "<p>Legnézettebb videók</p>";
