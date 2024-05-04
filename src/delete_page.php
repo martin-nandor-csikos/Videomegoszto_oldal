@@ -151,6 +151,12 @@ if (!isset($_SESSION['user_isadmin']) || $_SESSION['user_isadmin'] == 0) {
 
   <br>
 
+  <form action="php/add_category.php" method="post">
+    <label for="category_name">Új kategória:</label>
+    <input type="text" name="category_name" id="category_name">
+    <input type="submit" value="Küldés" name="add_category" id="add_category">
+  </form>
+
   <table border="1">
     <th>ID</th>
     <th>Kategória</th>
