@@ -109,6 +109,20 @@ oci_execute($count_comments);
 oci_fetch($count_comments);
 $comment_count = oci_result($count_comments, "COMMENT_COUNT");
 
+// Legtöbb kommentet író csatorna a videó alatt
+$most_commented = oci_parse($conn,
+    "SELECT COUNT(IRO.KOMMENT_ID) AS KOMMENT_DB, FELHASZNALO.NEV, EREDET.VIDEO_ID
+    FROM IRO
+    INNER JOIN FELHASZNALO ON IRO.FELHASZNALO_ID = FELHASZNALO.ID
+    INNER JOIN EREDET ON EREDET.KOMMENT_ID = IRO.KOMMENT_ID
+    WHERE EREDET.VIDEO_ID = :video_id
+    GROUP BY FELHASZNALO.NEV, EREDET.VIDEO_ID
+    ORDER BY KOMMENT_DB DESC
+    FETCH FIRST 3 ROWS ONLY"
+);
+oci_bind_by_name($most_commented, ":video_id", $video_id);
+oci_execute($most_commented);
+
 // Count likes
 $count_likes = oci_parse($conn,
     "SELECT COUNT(*) AS LIKE_COUNT
@@ -167,7 +181,7 @@ $like_count = oci_result($count_likes, "LIKE_COUNT");
     " . $video_cim . "<br />
     " . $video_leiras . "<br />";
 
-    if ($feltolto_id === $_SESSION['user_id']) echo "
+    if (isset($_SESSION['user_id']) && $feltolto_id === $_SESSION['user_id']) echo "
     <form action='video_modify_page.php' method='post'>
         <input type='submit' name='video_modify' value='Videó adatok módosítása'/><br />
         <input type='hidden' id='video_id' name='video_id' value='" . $video_id . "' />
@@ -183,7 +197,13 @@ $like_count = oci_result($count_likes, "LIKE_COUNT");
     else echo "A videónak nincs címkéje.<br />";
 
     echo "Kommentek: " . $comment_count . "<br />";
+    echo "Videó alatt a legtöbb kommentet író: ";
+    while (oci_fetch($most_commented)) {
+        echo "<a href='channel_page.php?user=" . oci_result($most_commented, "NEV") . "'>|" . oci_result($most_commented, "NEV") . " - " . oci_result($most_commented, "KOMMENT_DB") . " | </a>";
+    }
+    echo "<br>";
     echo "Like-ok: " . $like_count . "<br />";
+    
     
     if (isset($_SESSION['user_id'])) {
         if ($kedvenc){
@@ -217,12 +237,12 @@ $like_count = oci_result($count_likes, "LIKE_COUNT");
     while (oci_fetch($comments)) {
         echo "<div class='comment' id='" . oci_result($comments, "ID") . "'>" . oci_result($comments, "NEV") . ": " . oci_result($comments, "SZOVEG") . "<br />
         ". oci_result($comments, "IDO") . "<br />";
-        if (oci_result($comments, "FID") === $_SESSION['user_id']) {
+        if (isset($_SESSION['user_id']) && oci_result($comments, "FID") === $_SESSION['user_id']) {
             echo "
             <button onclick='editComment(" . $video_id . ", " . oci_result($comments, "ID") . ")'>Módosítás</button>
             <br />";
         }
-        if (oci_result($comments, "FID") === $_SESSION['user_id'] || $_SESSION['user_isadmin'] == 1) {
+        if (isset($_SESSION['user_id']) && (oci_result($comments, "FID") === $_SESSION['user_id'] || $_SESSION['user_isadmin'] == 1)) {
             echo "<form action='php/delete_comment.php' method='post' onsubmit=\"return confirm('Biztosan törölni szeretnéd a kommentet?');\">
             <input type='hidden' id='comment_id' name='comment_id' value='" . oci_result($comments, "ID") . "' />
             <input type='submit' name='comment_delete' value='Törlés' />

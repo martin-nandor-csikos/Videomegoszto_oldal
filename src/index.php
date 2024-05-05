@@ -120,6 +120,18 @@ session_start();
 
     echo "<p>Legtöbb kommentet író felhasználók</p>";
     getMostCommented();
+
+    echo "<p>Mai napon a legtöbb videót feltöltő felhasználók</p>";
+    getMostUploadedToday();
+
+    echo "<p>Mai napon a legtöbb kommentet író felhasználók</p>";
+    getMostCommentedToday();
+
+    echo "<p>Legtöbb videóval rendelkező kategóriák</p>";
+    getMostUploadedByCategory();
+
+    echo "<p>Legtöbb kommenttel rendelkező kategóriák</p>";
+    getMostCommentedByCategory();
     ?>
 
 </body>
