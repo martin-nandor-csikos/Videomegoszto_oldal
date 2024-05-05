@@ -901,3 +901,16 @@ FOR EACH ROW
 BEGIN
     :NEW.CIM := INITCAP(:NEW.CIM);
 END;
+
+--------------------------------------------------------
+--  Create CapitalizeCategory Trigger
+--------------------------------------------------------
+
+CREATE OR REPLACE TRIGGER CapitalizeCategory
+BEFORE INSERT OR UPDATE OF KATEGORIA
+ON VIDEO_KATEGORIA
+FOR EACH ROW
+BEGIN
+  :NEW.KATEGORIA := INITCAP(:NEW.KATEGORIA);
+END;
+
