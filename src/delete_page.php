@@ -168,6 +168,7 @@ if (!isset($_SESSION['user_isadmin']) || $_SESSION['user_isadmin'] == 0) {
     <th>ID</th>
     <th>Kategória</th>
     <th>Törlés</th>
+    <th>Módosítás</th>
     <?php
     $list_categories = oci_parse($conn, "SELECT * FROM KATEGORIA");
     oci_execute($list_categories);
@@ -189,6 +190,13 @@ if (!isset($_SESSION['user_isadmin']) || $_SESSION['user_isadmin'] == 0) {
         <form action="./php/delete_category.php" method="POST">
           <input type="hidden" id="category_id" name="category_id" value="' . $row['ID'] . '">
           <input type="submit" value="Törlés" name="delete_category" id="delete_category">
+        </form>
+        </td>';
+        echo '<td>
+        <form action="./php/category_modify.php" method="POST">
+        <input type="text" name="category_name" id="category_name">
+        <input type="hidden" id="category_id" name="category_id" value="' . $row['ID'] . '">
+        <input type="submit" value="Módosítás" name="category_modify" id="category_modify">
         </form>
         </td></tr>';
       }
