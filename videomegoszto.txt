@@ -855,12 +855,12 @@ AS
     tag_id CIMKE.ID%TYPE;
     res_count NUMBER;
     BEGIN
-        SELECT COUNT(*) INTO res_count FROM CIMKE WHERE CIM LIKE tag_name;
+        SELECT COUNT(*) INTO res_count FROM CIMKE WHERE LOWER(CIM) LIKE LOWER(tag_name);
         IF res_count = 0 THEN
             SELECT CIMKE_SEQ.NEXTVAL INTO tag_id FROM DUAL;
             INSERT INTO CIMKE (ID, CIM) VALUES (tag_id, tag_name);
         ELSE
-            SELECT ID INTO tag_id FROM CIMKE WHERE CIM LIKE tag_name;
+            SELECT ID INTO tag_id FROM CIMKE WHERE LOWER(CIM) LIKE LOWER(tag_name);
         END IF;
         video_sid := video_id;
         SELECT COUNT(*) INTO res_count FROM VIDEO_CIMKE WHERE VIDEO_ID = video_sid AND CIMKE_ID = tag_id;
@@ -914,3 +914,26 @@ BEGIN
   :NEW.CIM := INITCAP(:NEW.CIM);
 END;
 
+--------------------------------------------------------
+--  Create RemoveCategory Function
+--------------------------------------------------------
+
+create or replace FUNCTION RemoveCategory (
+    category_id IN KATEGORIA.ID%TYPE)
+RETURN NUMBER
+AS
+    category_sid KATEGORIA.ID%TYPE;
+    res_count NUMBER;
+    BEGIN
+        category_sid := category_id;
+        SELECT COUNT(*) INTO res_count FROM VIDEO_KATEGORIA WHERE KATEGORIA_ID = category_sid;
+        DBMS_OUTPUT.PUT_LINE(res_count);
+        DBMS_OUTPUT.PUT_LINE(category_id);
+        DBMS_OUTPUT.PUT_LINE(category_sid);
+        IF res_count > 0 THEN
+            RETURN 0;
+        ELSE
+            DELETE FROM KATEGORIA WHERE ID = category_sid;
+            RETURN 1;
+        END IF;
+    END;
